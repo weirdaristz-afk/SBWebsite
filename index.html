@@ -11,24 +11,24 @@
     <!-- Icon Library for cute icons -->
     <script src="https://unpkg.com/phosphor-icons"></script>
     <style>
-        /* --- New Cutesy Pastel Unicorn Theme --- */
+        /* --- New Halloween Vibe Theme --- */
         :root {
-            --bg-color: #fdf6ff; /* Light lavender-white */
-            --surface-color: #ffffff;
-            --primary-color: #ff89d1; /* Bright Pink */
-            --secondary-color: #89cff0; /* Baby Blue */
-            --accent-color: #a0e7e5; /* Mint Green */
-            --text-color: #5b5f97; /* Dark Purple-Blue */
+            --bg-color: #121212; /* Deep Dark Background */
+            --surface-color: #1e1e1e; /* Dark Grey Surface */
+            --primary-color: #ff7518; /* Pumpkin Orange */
+            --secondary-color: #9400d3; /* Dark Violet/Purple */
+            --accent-color: #50c878; /* Emerald/Slime Green */
+            --text-color: #f0f0f0; /* Off-white */
             --header-font: 'Fredoka One', cursive;
             --body-font: 'Nunito', sans-serif;
-            --shadow: 0 4px 15px rgba(180, 180, 220, 0.2);
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
         }
         html {
             scroll-behavior: smooth;
         }
         body {
             background-color: var(--bg-color);
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23e6e6fa' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%239400d3' fill-opacity='0.08'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.6l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
             color: var(--text-color);
             font-family: var(--body-font);
             margin: 0;
@@ -38,7 +38,7 @@
 
         /* --- Navigation Bar --- */
         nav {
-            background-color: rgba(255, 255, 255, 0.8);
+            background-color: rgba(30, 30, 30, 0.8);
             backdrop-filter: blur(10px);
             position: sticky;
             top: 0;
@@ -46,6 +46,7 @@
             z-index: 1000;
             box-shadow: var(--shadow);
             padding: 10px 0;
+            border-bottom: 1px solid #333;
         }
         nav ul {
             margin: 0;
@@ -81,7 +82,7 @@
             font-size: 1.4em;
         }
 
-        /* --- Page Container --- */
+        /* --- Page Container & Transitions --- */
         .container {
             padding: 20px;
             max-width: 1100px;
@@ -89,9 +90,14 @@
         }
         main {
             display: none; /* All pages hidden by default */
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
         }
         main.active {
             display: block; /* Show only the active page */
+            opacity: 1;
+            transform: translateY(0);
         }
         
         h1, h2, h3 {
@@ -100,7 +106,7 @@
         h1 {
             font-size: clamp(2.5rem, 10vw, 4rem);
             color: var(--primary-color);
-            text-shadow: 2px 2px 0 #fff, 4px 4px 0 var(--secondary-color);
+            text-shadow: 2px 2px 0 #000, 4px 4px 0 var(--secondary-color);
             margin: 20px 0;
         }
         h2 {
@@ -120,6 +126,7 @@
             margin: 40px 0;
             border-radius: 24px;
             box-shadow: var(--shadow);
+            border: 1px solid #333;
         }
 
         /* --- Buttons & Links --- */
@@ -136,7 +143,7 @@
             display: inline-block;
             margin-top: 20px;
             border: none;
-            box-shadow: 0 5px 20px rgba(255, 137, 209, 0.5);
+            box-shadow: 0 5px 20px rgba(255, 117, 24, 0.4);
         }
         .play-button:hover {
             transform: scale(1.05) rotate(-2deg);
@@ -148,10 +155,10 @@
             font-size: 2.2em;
             color: var(--text-color);
             margin-top: 10px;
-            background: #fff;
+            background: var(--surface-color);
             padding: 20px;
             border-radius: 20px;
-            box-shadow: inset 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.2);
         }
 
         /* --- Coming Soon Sets --- */
@@ -165,14 +172,15 @@
             border-radius: 20px;
             overflow: hidden;
             transition: all 0.3s ease;
-            border: 2px solid transparent;
+            border: 2px solid #333;
             box-shadow: var(--shadow);
         }
         .set-card:hover {
             transform: translateY(-10px);
+            border-color: var(--primary-color);
         }
         .set-card .image-placeholder {
-            background-color: #e0e7ff;
+            background-color: #111;
             width: 100%;
             height: 220px;
             display: flex;
@@ -197,7 +205,7 @@
         }
         .hidden-set .image-placeholder {
             filter: blur(15px) grayscale(50%);
-            color: #c9d1e2;
+            color: #444;
         }
         .revealed {
             border-color: var(--accent-color);
@@ -218,9 +226,11 @@
             border-radius: 20px;
             box-shadow: var(--shadow);
             transition: transform 0.3s ease;
+            border: 1px solid #333;
         }
         .creator-card:hover, .game-card:hover {
             transform: translateY(-5px);
+            border-color: var(--primary-color);
         }
         .creator-card h3 { color: var(--primary-color); margin-top: 0; }
         .creator-card p { font-size: 1em; margin-bottom: 15px; }
@@ -245,7 +255,7 @@
         footer {
             padding: 40px 20px;
             margin-top: 50px;
-            color: #aaa;
+            color: #666;
         }
         footer a { color: var(--primary-color); }
     </style>
@@ -277,19 +287,19 @@
                 <div class="card-grid">
                     <a href="https://www.roblox.com/games/735030788/Adopt-Me" target="_blank" style="text-decoration:none;">
                         <div class="game-card">
-                            <img src="https://placehold.co/400x200/89CFF0/FFFFFF?text=Adopt+Me!" alt="Adopt Me">
+                            <img src="https://placehold.co/400x200/9400D3/FFFFFF?text=Adopt+Me!" alt="Adopt Me">
                             <h3>Adopt Me!</h3>
                         </div>
                     </a>
                     <a href="https://www.roblox.com/games/920587237/Royale-High" target="_blank" style="text-decoration:none;">
                         <div class="game-card">
-                            <img src="https://placehold.co/400x200/FF89D1/FFFFFF?text=Royale+High" alt="Royale High">
+                            <img src="https://placehold.co/400x200/FF7518/FFFFFF?text=Royale+High" alt="Royale High">
                             <h3>Royale High</h3>
                         </div>
                     </a>
                     <a href="https://www.roblox.com/games/286090429/Arsenal" target="_blank" style="text-decoration:none;">
                         <div class="game-card">
-                            <img src="https://placehold.co/400x200/A0E7E5/FFFFFF?text=Arsenal" alt="Arsenal">
+                            <img src="https://placehold.co/400x200/50C878/FFFFFF?text=Arsenal" alt="Arsenal">
                             <h3>Arsenal</h3>
                         </div>
                     </a>
@@ -379,11 +389,28 @@
 
             function showPage(pageId) {
                 pages.forEach(page => {
-                    page.classList.remove('active');
-                    if (`#${page.id.replace('-page', '')}` === pageId) {
-                        page.classList.add('active');
-                    }
+                    // Remove active class to trigger fade out
+                    page.classList.remove('active'); 
                 });
+
+                // Use a short timeout to allow the fade-out to happen before switching content
+                setTimeout(() => {
+                    pages.forEach(page => {
+                        // Hide all pages
+                        page.style.display = 'none'; 
+                        
+                        // Show the target page and trigger fade in
+                        if (`#${page.id.replace('-page', '')}` === pageId) {
+                            page.style.display = 'block';
+                            // A second timeout ensures the 'display: block' is rendered before adding the class
+                            setTimeout(() => { 
+                                page.classList.add('active');
+                            }, 20);
+                        }
+                    });
+                }, 250); // This duration should be less than the CSS transition time
+
+
                 navLinks.forEach(link => {
                     link.classList.remove('active');
                     if (link.getAttribute('href') === pageId) {
@@ -403,7 +430,19 @@
             
             // Show initial page based on URL hash or default to home
             const initialPage = window.location.hash || '#home';
-            showPage(initialPage);
+            const targetPage = document.getElementById(initialPage.substring(1) + '-page');
+            if (targetPage) {
+                targetPage.style.display = 'block';
+                setTimeout(() => {
+                    targetPage.classList.add('active');
+                }, 20);
+            }
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === initialPage) {
+                    link.classList.add('active');
+                }
+            });
 
 
             // --- COUNTDOWN TIMER ---
