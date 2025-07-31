@@ -4,29 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sweeties Boutique - A Roblox Unicorn Game</title>
+    <!-- New Font: Poppins from Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* --- General Styles --- */
+        /* --- New Modern, Dark Theme --- */
+        :root {
+            --primary-color: #ff89d1; /* Bright Pink */
+            --secondary-color: #f9a825; /* Gold/Orange */
+            --background-color: #121212; /* Very Dark Grey */
+            --surface-color: #1e1e1e; /* Lighter Dark Grey */
+            --text-color: #e0e0e0;
+            --header-font: 'Poppins', sans-serif;
+        }
         html {
-            scroll-behavior: smooth; /* This makes the page scroll smoothly when clicking nav links */
+            scroll-behavior: smooth;
         }
         body {
-            background-color: #1a1a1a; /* Dark background */
-            color: #ffffff; /* White text */
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
             text-align: center;
         }
 
-        /* --- Navigation Bar ("Tabs") --- */
+        /* --- Navigation Bar --- */
         nav {
-            background-color: rgba(26, 26, 26, 0.9); /* Slightly transparent dark background */
-            backdrop-filter: blur(10px); /* Frosted glass effect */
-            border-bottom: 2px solid #ff9900;
-            position: sticky; /* Makes the nav bar stick to the top */
+            background-color: rgba(30, 30, 30, 0.85);
+            backdrop-filter: blur(10px);
+            position: sticky;
             top: 0;
             width: 100%;
             z-index: 1000;
+            border-bottom: 1px solid var(--surface-color);
         }
         nav ul {
             margin: 0;
@@ -34,128 +46,167 @@
             list-style: none;
             display: flex;
             justify-content: center;
-            gap: 30px;
+            flex-wrap: wrap; /* Allows nav items to wrap on smaller screens */
+            gap: 20px;
         }
         nav a {
-            color: #f8b4d9; /* Pastel Pink */
+            color: var(--text-color);
             text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1em;
-            transition: color 0.3s;
+            font-weight: 600;
+            font-size: 1em;
+            padding: 5px 15px;
+            border-radius: 20px;
+            transition: background-color 0.3s, color 0.3s;
         }
-        nav a:hover {
-            color: #ffffff;
+        nav a:hover, nav a.active {
+            background-color: var(--primary-color);
+            color: #121212;
         }
 
-        /* --- Header & Banner --- */
-        header h1 {
-            color: #1a1a1a;
-            margin: 0;
-            font-size: 2.5em;
-            padding: 20px;
-            background-color: #f8b4d9; /* Pastel Pink */
-        }
+        /* --- General Content --- */
         .container {
             padding: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
         }
-        .banner {
-            background-image: url('YOUR_BANNER_IMAGE_URL_HERE'); /* <-- IMPORTANT: Add your banner image URL here */
-            background-size: cover;
-            background-position: center;
-            height: 400px;
+        .section {
+            padding: 60px 20px; /* More padding to separate sections */
+            border-bottom: 1px solid var(--surface-color);
+        }
+        .section:last-child {
+            border-bottom: none;
+        }
+        h1, h2 {
+            font-family: var(--header-font);
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+        }
+        p {
+            line-height: 1.8;
+            max-width: 700px;
+            margin: 0 auto 20px auto;
+        }
+
+        /* --- Header & Countdown --- */
+        .hero {
+            padding: 40px 20px;
+        }
+        .hero h1 {
+            font-size: 3.5em;
+            margin: 0;
+        }
+        #countdown {
+            font-size: 2em;
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin-top: 10px;
+        }
+        .play-button {
+            background-color: var(--primary-color);
+            color: var(--background-color);
+            padding: 15px 40px;
+            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: 700;
+            border-radius: 50px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: inline-block;
+            margin-top: 30px;
+        }
+        .play-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px var(--primary-color);
+        }
+
+        /* --- Coming Soon Sets --- */
+        .sets-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .set-card {
+            background-color: var(--surface-color);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        .set-card:hover {
+            transform: translateY(-10px);
+        }
+        .set-card .image-placeholder {
+            background-color: #333;
+            width: 100%;
+            height: 200px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 15px;
-            margin-bottom: 30px;
-        }
-        .play-button {
-            background-color: #ff9900;
-            color: #ffffff;
-            padding: 15px 30px;
-            text-decoration: none;
-            font-size: 1.5em;
-            font-weight: bold;
-            border-radius: 50px;
-            border: 3px solid #ffffff;
-            transition: transform 0.2s;
-        }
-        .play-button:hover {
-            transform: scale(1.1);
-        }
-
-        /* --- Page Sections --- */
-        .section {
-            background-color: #2a2a2a;
-            margin: 30px auto;
-            padding: 30px;
-            border-radius: 15px;
-            max-width: 900px;
-        }
-        h2 {
-            color: #f8b4d9; /* Pastel Pink */
-            font-size: 2em;
-        }
-
-        /* --- Countdown Timer --- */
-        #countdown {
             font-size: 2.5em;
             font-weight: bold;
-            color: #ff9900; /* Candy Corn Orange */
-            background-color: #333;
+        }
+        .set-card .info {
             padding: 20px;
-            border-radius: 10px;
-            margin-top: 10px;
         }
-        
-        /* --- Video Trailer --- */
-        .video-container {
-            position: relative;
-            overflow: hidden;
-            width: 100%;
-            padding-top: 56.25%; /* 16:9 Aspect Ratio */
-            border-radius: 10px;
+        .set-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary-color);
         }
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
+        /* Reveal Styling */
+        .hidden-set .image-placeholder {
+            filter: blur(10px);
+        }
+        .hidden-set .info h3 {
+            color: #555;
+        }
+        .hidden-set .info p {
+            color: #555;
+        }
+        .revealed { /* Style when revealed */
+            border: 2px solid var(--secondary-color);
+        }
+        .revealed .image-placeholder {
+            filter: blur(0);
+        }
+        .revealed .info h3 {
+            color: var(--secondary-color);
+        }
+         .revealed .info p {
+            color: var(--text-color);
+        }
+
+        /* --- Twitter Feed --- */
+        #twitter-feed {
+            border: 2px solid var(--surface-color);
+            border-radius: 15px;
+            padding: 20px;
+            min-height: 400px;
         }
 
         /* --- Update Log --- */
         .update-entry {
+            background: var(--surface-color);
+            padding: 20px;
+            border-radius: 10px;
             text-align: left;
             margin-bottom: 20px;
-            border-left: 4px solid #f8b4d9;
-            padding-left: 15px;
         }
         .update-entry h3 {
-            margin: 0 0 5px 0;
-            color: #ffffff;
+            margin: 0 0 10px 0;
+            color: var(--primary-color);
         }
         .update-entry ul {
             margin: 0;
             padding-left: 20px;
         }
         
-        /* --- Footer & Community Links --- */
-        .community-links a {
-            color: #f8b4d9;
-            text-decoration: none;
-            margin: 0 15px;
-            font-size: 1.2em;
-        }
-        .community-links a:hover {
-            text-decoration: underline;
-        }
+        /* --- Footer --- */
         footer {
-            padding: 20px;
-            margin-top: 30px;
-            background-color: #2a2a2a;
+            padding: 40px 20px;
+            background-color: var(--surface-color);
+            margin-top: 50px;
         }
     </style>
 </head>
@@ -164,44 +215,71 @@
     <nav>
         <ul>
             <li><a href="#home">Home</a></li>
-            <li><a href="#trailer">Trailer</a></li>
+            <li><a href="#coming-soon">Coming Soon</a></li>
+            <li><a href="#feed">Live Feed</a></li>
             <li><a href="#updates">Update Log</a></li>
-            <li><a href="#community">Community</a></li>
         </ul>
     </nav>
 
-    <header>
-        <h1>🎃 Sweeties Boutique 🦄</h1>
-    </header>
-
     <div class="container">
-        
-        <div id="home">
-            <div class="banner">
-                <a href="https://www.roblox.com/games/76878409184583/Sweeties-Boutique-Currently-Testing" class="play-button" target="_blank">👻 Play Now! 👻</a>
-            </div>
-            <div class="section">
-                <h2>🦇 Halloween Update Arrives October 1st! 🦇</h2>
-                <div id="countdown">Loading countdown...</div>
-            </div>
-        </div>
 
-        <div id="trailer" class="section">
-            <h2>✨ Game Trailer ✨</h2>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-        </div>
+        <!-- HOME SECTION -->
+        <section id="home" class="section hero">
+            <h1>🎃 Sweeties Boutique 🦄</h1>
+            <p>The Halloween Update is coming!</p>
+            <div id="countdown">Loading...</div>
+            <a href="https://www.roblox.com/share?code=f99ee88b22bdd341beee2509c9b6a24f&type=ExperienceDetails" class="play-button" target="_blank">Play Now on Roblox</a>
+        </section>
 
-        <div id="updates" class="section">
-            <h2>📜 Update Log 📜</h2>
+        <!-- COMING SOON SECTION -->
+        <section id="coming-soon" class="section">
+            <h2>Sets Coming Soon...</h2>
+            <p>These new sets will be revealed on **September 15th**! Stay tuned!</p>
+            <div class="sets-grid">
+                <!-- This set is hidden and will be revealed by the script -->
+                <div id="set1" class="set-card hidden-set">
+                    <div class="image-placeholder">?</div>
+                    <div class="info">
+                        <h3>???</h3>
+                        <p>A mysterious new set is on its way...</p>
+                    </div>
+                </div>
+                <!-- This set is also hidden -->
+                <div id="set2" class="set-card hidden-set">
+                    <div class="image-placeholder">?</div>
+                    <div class="info">
+                        <h3>???</h3>
+                        <p>Something wicked this way comes...</p>
+                    </div>
+                </div>
+                <!-- Add more hidden sets here -->
+            </div>
+        </section>
+
+        <!-- TWITTER/X FEED SECTION -->
+        <section id="feed" class="section">
+            <h2>Live from Twitter/X</h2>
+            <p>Follow us for the latest sneak peeks and announcements!</p>
+            <div id="twitter-feed">
+                <!-- 
+                    INSTRUCTIONS: 
+                    1. Go to https://publish.twitter.com/
+                    2. Paste your Twitter URL (e.g., https://twitter.com/Roblox)
+                    3. Choose "Embedded Timeline"
+                    4. Copy the code they give you and PASTE IT HERE, replacing this message.
+                -->
+                <p style="padding-top: 100px;">Your live Twitter feed will appear here!</p>
+            </div>
+        </section>
+
+        <!-- UPDATE LOG SECTION -->
+        <section id="updates" class="section">
+            <h2>Past Game Updates</h2>
             <div class="update-entry">
                 <h3>Halloween Update - Coming Oct 1, 2025</h3>
                 <ul>
                     <li>Introduced the new Spooky Haunted Boutique area!</li>
                     <li>Added 5 new limited-time Unicorns: Ghostly, Vampy, Candy Corn, Pumpkin Spice, and Witchy.</li>
-                    <li>New Halloween-themed quests and accessories.</li>
-                    <li>Bug fixes and performance improvements.</li>
                 </ul>
             </div>
              <div class="update-entry">
@@ -210,52 +288,58 @@
                     <li>Sweeties Boutique is now open!</li>
                 </ul>
             </div>
-        </div>
+        </section>
 
-        <div id="community" class="section">
-            <h2>💖 Join Our Community 💖</h2>
-            <p>Get the latest news and connect with other players!</p>
-            <p class="community-links">
-                <a href="#" target="_blank">Discord</a> | 
-                <a href="https://x.com/playsweetiesb?s=21" target="_blank">Twitter/X</a> | 
-                <a href="https://www.roblox.com/communities/35458624/Luckycorn-Studios#!/about">Roblox Group</a>
-            </p>
-        </div>
     </div>
 
     <footer>
-        <p>&copy; 2025 Luckycorn Studios. All Rights Reserved.</p>
+        <p>Join the community!</p>
+        <!-- Add your links here -->
+        <a href="#">Discord</a> | <a href="#">Twitter/X</a> | <a href="https://www.roblox.com/share/g/35458624" target="_blank">Roblox Group</a>
+        <p style="margin-top: 20px; font-size: 0.8em;">&copy; 2025 Sweeties Boutique. All Rights Reserved.</p>
     </footer>
 
+    <!-- JAVASCRIPT LOGIC -->
     <script>
-        // Set the date we're counting down to
+        // --- COUNTDOWN TIMER ---
         const countDownDate = new Date("Oct 1, 2025 00:00:00").getTime();
-
-        // Update the count down every 1 second
-        const x = setInterval(function() {
-
-            // Get today's date and time
+        const countdownElement = document.getElementById("countdown");
+        const countdownInterval = setInterval(() => {
             const now = new Date().getTime();
-
-            // Find the distance between now and the count down date
             const distance = countDownDate - now;
-
-            // Time calculations for days, hours, minutes and seconds
+            if (distance < 0) {
+                clearInterval(countdownInterval);
+                countdownElement.innerHTML = "THE UPDATE IS LIVE! 🎉";
+                return;
+            }
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            // Display the result in the element with id="countdown"
-            document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
-            + minutes + "m " + seconds + "s ";
-
-            // If the count down is finished, write some text 
-            if (distance < 0) {
-                clearInterval(x);
-                document.getElementById("countdown").innerHTML = "THE UPDATE IS LIVE! 🎉";
-            }
+            countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
         }, 1000);
+
+        // --- COMING SOON REVEAL ---
+        const revealDate = new Date("Sep 15, 2025 00:00:00").getTime();
+        const now = new Date().getTime();
+
+        if (now >= revealDate) {
+            // Reveal Set 1
+            const set1 = document.getElementById('set1');
+            set1.classList.remove('hidden-set');
+            set1.classList.add('revealed');
+            set1.querySelector('.image-placeholder').innerHTML = '🦄'; // Replace with your image tag
+            set1.querySelector('h3').innerText = 'The Starfall Set';
+            set1.querySelector('p').innerText = 'A magical set forged from fallen stars.';
+
+            // Reveal Set 2
+            const set2 = document.getElementById('set2');
+            set2.classList.remove('hidden-set');
+            set2.classList.add('revealed');
+            set2.querySelector('.image-placeholder').innerHTML = '🦇'; // Replace with your image tag
+            set2.querySelector('h3').innerText = 'The Midnight Set';
+            set2.querySelector('p').innerText = 'A spooky set perfect for creatures of the night.';
+        }
     </script>
 
 </body>
