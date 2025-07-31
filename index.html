@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweeties Boutique - A Roblox Unicorn Game</title>
+    <style>
+        /* --- General Styles --- */
+        html {
+            scroll-behavior: smooth; /* This makes the page scroll smoothly when clicking nav links */
+        }
+        body {
+            background-color: #1a1a1a; /* Dark background */
+            color: #ffffff; /* White text */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        /* --- Navigation Bar ("Tabs") --- */
+        nav {
+            background-color: rgba(26, 26, 26, 0.9); /* Slightly transparent dark background */
+            backdrop-filter: blur(10px); /* Frosted glass effect */
+            border-bottom: 2px solid #ff9900;
+            position: sticky; /* Makes the nav bar stick to the top */
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        nav ul {
+            margin: 0;
+            padding: 15px 0;
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+        nav a {
+            color: #f8b4d9; /* Pastel Pink */
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #ffffff;
+        }
+
+        /* --- Header & Banner --- */
+        header h1 {
+            color: #1a1a1a;
+            margin: 0;
+            font-size: 2.5em;
+            padding: 20px;
+            background-color: #f8b4d9; /* Pastel Pink */
+        }
+        .container {
+            padding: 20px;
+        }
+        .banner {
+            background-image: url('YOUR_BANNER_IMAGE_URL_HERE'); /* <-- IMPORTANT: Add your banner image URL here */
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        .play-button {
+            background-color: #ff9900;
+            color: #ffffff;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-size: 1.5em;
+            font-weight: bold;
+            border-radius: 50px;
+            border: 3px solid #ffffff;
+            transition: transform 0.2s;
+        }
+        .play-button:hover {
+            transform: scale(1.1);
+        }
+
+        /* --- Page Sections --- */
+        .section {
+            background-color: #2a2a2a;
+            margin: 30px auto;
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 900px;
+        }
+        h2 {
+            color: #f8b4d9; /* Pastel Pink */
+            font-size: 2em;
+        }
+
+        /* --- Countdown Timer --- */
+        #countdown {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #ff9900; /* Candy Corn Orange */
+            background-color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+        
+        /* --- Video Trailer --- */
+        .video-container {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            border-radius: 10px;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* --- Update Log --- */
+        .update-entry {
+            text-align: left;
+            margin-bottom: 20px;
+            border-left: 4px solid #f8b4d9;
+            padding-left: 15px;
+        }
+        .update-entry h3 {
+            margin: 0 0 5px 0;
+            color: #ffffff;
+        }
+        .update-entry ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        
+        /* --- Footer & Community Links --- */
+        .community-links a {
+            color: #f8b4d9;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.2em;
+        }
+        .community-links a:hover {
+            text-decoration: underline;
+        }
+        footer {
+            padding: 20px;
+            margin-top: 30px;
+            background-color: #2a2a2a;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#trailer">Trailer</a></li>
+            <li><a href="#updates">Update Log</a></li>
+            <li><a href="#community">Community</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>🎃 Sweeties Boutique 🦄</h1>
+    </header>
+
+    <div class="container">
+        
+        <div id="home">
+            <div class="banner">
+                <a href="https://www.roblox.com/share?code=f99ee88b22bdd341beee2509c9b6a24f&type=ExperienceDetails" class="play-button" target="_blank">👻 Play Now! 👻</a>
+            </div>
+            <div class="section">
+                <h2>🦇 Halloween Update Arrives October 1st! 🦇</h2>
+                <div id="countdown">Loading countdown...</div>
+            </div>
+        </div>
+
+        <div id="trailer" class="section">
+            <h2>✨ Game Trailer ✨</h2>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div id="updates" class="section">
+            <h2>📜 Update Log 📜</h2>
+            <div class="update-entry">
+                <h3>Halloween Update - Coming Oct 1, 2025</h3>
+                <ul>
+                    <li>Introduced the new Spooky Haunted Boutique area!</li>
+                    <li>Added 5 new limited-time Unicorns: Ghostly, Vampy, Candy Corn, Pumpkin Spice, and Witchy.</li>
+                    <li>New Halloween-themed quests and accessories.</li>
+                    <li>Bug fixes and performance improvements.</li>
+                </ul>
+            </div>
+             <div class="update-entry">
+                <h3>v1.0 - Launch!</h3>
+                <ul>
+                    <li>Sweeties Boutique is now open!</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="community" class="section">
+            <h2>💖 Join Our Community 💖</h2>
+            <p>Get the latest news and connect with other players!</p>
+            <p class="community-links">
+                <a href="#" target="_blank">Discord</a> | 
+                <a href="YOUR_X_TWITTER_URL_HERE" target="_blank">Twitter/X</a> | 
+                <a href="https://www.roblox.com/share/g/35458624" target="_blank">Roblox Group</a>
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Sweeties Boutique. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Set the date we're counting down to
+        const countDownDate = new Date("Oct 1, 2025 00:00:00").getTime();
+
+        // Update the count down every 1 second
+        const x = setInterval(function() {
+
+            // Get today's date and time
+            const now = new Date().getTime();
+
+            // Find the distance between now and the count down date
+            const distance = countDownDate - now;
+
+            // Time calculations for days, hours, minutes and seconds
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Display the result in the element with id="countdown"
+            document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+            + minutes + "m " + seconds + "s ";
+
+            // If the count down is finished, write some text 
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("countdown").innerHTML = "THE UPDATE IS LIVE! 🎉";
+            }
+        }, 1000);
+    </script>
+
+</body>
+</html>
