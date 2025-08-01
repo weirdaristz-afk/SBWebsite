@@ -4,27 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sweeties Boutique - A Magical Roblox Game</title>
-
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600;700&family=Lilita+One&family=Poppins:wght@400;700&family=Lobster&family=Roboto+Slab:wght@400;700&family=Mountains+of+Christmas:wght@700&family=Lato:wght@400;700&family=Creepster&family=Anton&family=Merriweather&family=Bungee&family=Great+Vibes&family=Noto+Serif+SC&family=Uncial+Antiqua&display=swap" rel="stylesheet">
+    
     <script src="https://unpkg.com/phosphor-icons"></script>
 
     <style>
         :root {
             --bg-color: #fdf6e3; --surface-color: #fffaf0; --primary-color: #ffb6c1; --secondary-color: #87ceeb; --accent-color: #98fb98;
-            --text-color: #5d5d5d; --header-font: 'Pacifico', cursive; --body-font: 'Quicksand', sans-serif; --shadow: 0 6px 18px rgba(0, 0, 0, 0.08); /* Softer shadow */
+            --text-color: #5d5d5d; --header-font: 'Pacifico', cursive; --body-font: 'Quicksand', sans-serif; --shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
             --nav-bg: rgba(255, 255, 255, 0.7);
         }
         html { scroll-behavior: smooth; }
-        body { background-color: var(--bg-color); color: var(--text-color); font-family: var(--body-font); margin: 0; padding: 0; text-align: center; transition: background-color 0.5s ease, color 0.5s ease; cursor: none; overflow-x: hidden; /* Prevent horizontal scroll for bubbles */ }
+        body { background-color: var(--bg-color); color: var(--text-color); font-family: var(--body-font); margin: 0; padding: 0; text-align: center; transition: background-color 0.5s ease, color 0.5s ease; cursor: none; overflow-x: hidden; }
 
-        /* --- Themes & Dark Mode (Unchanged) --- */
-        body.theme-spring { --bg-color: #fdf6f9; --surface-color: #ffffff; --primary-color: #ff85a2; --secondary-color: #8de4ff; --accent-color: #b9ffb7; --text-color: #5c5255; --header-font: 'Pacifico', cursive; --body-font: 'Quicksand', sans-serif; }
-        body.theme-summer { --bg-color: #FFF9F5; --surface-color: #ffffff; --primary-color: #FF8C69; --secondary-color: #6AAB9C; --accent-color: #F0E68C; --text-color: #4A4A4A; --header-font: 'Lilita One', cursive; --body-font: 'Poppins', sans-serif; }
-        body.theme-autumn { --bg-color: #fff8f0; --surface-color: #ffffff; --primary-color: #e57a44; --secondary-color: #8c5e58; --accent-color: #a33333; --text-color: #5a4e46; --header-font: 'Lobster', cursive; --body-font: 'Roboto Slab', serif; }
+        /* --- Themes & Dark Mode --- */
         body.theme-halloween { --bg-color: #1c1c1c; --surface-color: #2a2a2a; --primary-color: #ff7518; --secondary-color: #9400d3; --accent-color: #50c878; --text-color: #f0f0f0; --header-font: 'Creepster', cursive; --body-font: 'Roboto Slab', serif; }
+        body.theme-autumn { --bg-color: #fff8f0; --surface-color: #ffffff; --primary-color: #e57a44; --secondary-color: #8c5e58; --accent-color: #a33333; --text-color: #5a4e46; --header-font: 'Lobster', cursive; --body-font: 'Roboto Slab', serif; }
         body.dark-mode { --bg-color: #1A1D28; --surface-color: #242835; --text-color: #E0E0E0; --shadow: 0 6px 18px rgba(0, 0, 0, 0.15); --nav-bg: rgba(26, 29, 40, 0.7); }
+        body.dark-mode.theme-autumn { --primary-color: #f38f5f; --secondary-color: #ab8a85; }
 
         /* --- General Layout --- */
         #custom-cursor { width: 30px; height: 30px; border: 2px solid var(--primary-color); border-radius: 50%; position: fixed; transform: translate(-50%, -50%); pointer-events: none; z-index: 9999; transition: all 0.2s; }
@@ -37,32 +37,26 @@
         #theme-toggle { background: none; border: 2px solid var(--primary-color); color: var(--primary-color); width: 45px; height: 45px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 1.5em; transition: all 0.3s ease; }
         #theme-toggle:hover { background-color: var(--primary-color); color: var(--surface-color); transform: rotate(15deg) scale(1.1); }
         nav i { font-size: 1.4em; }
-        .container { padding: 20px; max-width: 1100px; margin: 0 auto; }
+        .container { padding: 20px; max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
         main { display: none; opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease-out, transform 0.5s ease-out; }
         main.active { display: block; opacity: 1; transform: translateY(0); }
-        h1 { font-family: var(--header-font); font-size: clamp(2.5rem, 10vw, 4.5rem); color: var(--primary-color); text-shadow: 3px 3px 0 var(--secondary-color); margin: 20px 0; animation: float 6s ease-in-out infinite; }
+        h1 { font-family: var(--header-font); font-size: clamp(2.5rem, 10vw, 4.5rem); color: var(--primary-color); text-shadow: 3px 3px 0 var(--secondary-color); margin: 20px 0; animation: float 6s ease-in-out infinite; display: flex; align-items: center; justify-content: center; gap: 0.5em; }
         @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-15px); } 100% { transform: translateY(0px); } }
-        h2 { font-family: var(--header-font); font-size: 2.8em; color: var(--primary-color); margin-bottom: 0; }
+        h2 { font-family: var(--header-font); font-size: 2.8em; color: var(--primary-color); margin-bottom: 0; display: flex; align-items: center; justify-content: center; gap: 0.5em;}
         .section { background: var(--surface-color); padding: 40px; margin: 40px 0; border-radius: 24px; box-shadow: var(--shadow); border: 1px solid color-mix(in srgb, var(--text-color) 5%, transparent); }
-
-        /* --- ✨ New Bubbly Styles ✨ --- */
+        
+        /* --- Bubbly & Cute Styles --- */
         .play-button { background: linear-gradient(45deg, var(--primary-color), var(--secondary-color)); color: #fff; padding: 18px 45px; text-decoration: none; font-size: 1.3em; font-weight: 700; font-family: var(--header-font); border-radius: 50px; transition: transform 0.3s, box-shadow 0.3s; display: inline-block; margin-top: 20px; border: none; box-shadow: 0 4px 12px color-mix(in srgb, var(--primary-color) 40%, transparent); }
         .play-button:hover { transform: scale(1.05) rotate(-3deg); box-shadow: 0 8px 20px color-mix(in srgb, var(--secondary-color) 50%, transparent); }
         .cute-divider { height: 20px; width: 150px; margin: 15px auto; background-image: url("data:image/svg+xml,%3Csvg width='100' height='20' viewBox='0 0 100 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 10 L40 10 M60 10 L90 10' stroke='currentColor' stroke-width='2' stroke-linecap='round'/%3E%3Cpath d='M50 3L47 10L50 17L53 10z' fill='currentColor'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: center; background-size: contain; color: var(--primary-color); }
-
+        
         /* Character Card Styles */
-        .character-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 30px; }
-        .character-card { background-color: var(--bg-color); border-radius: 20px; overflow: hidden; border: 8px solid var(--surface-color); /* Frame */
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); position: relative; }
-        /* Optional: Add a subtle sparkle animation to the frame */
-        /* .character-card::before { content: ''; position: absolute; top: -5px; left: -5px; right: -5px; bottom: -5px; border-radius: inherit; z-index: -1;
-            background: linear-gradient(120deg, #f0f9ff, #e1bee7, #f0f9ff); background-size: 200% 200%; animation: sparkle 2s infinite alternate; }
-        @keyframes sparkle { 0% { background-position: 0% 50%; } 100% { background-position: 100% 50%; } } */
+        .character-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 30px; }
+        .character-card { background-color: var(--bg-color); border-radius: 20px; overflow: hidden; border: 8px solid var(--surface-color); box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); position: relative; }
         .character-card .char-image { width: 100%; height: 300px; background-size: cover; background-position: center; transition: transform 0.3s ease; }
         .character-card:hover .char-image { transform: scale(1.05); }
         .character-card .char-info { padding: 20px; }
-        .character-card h3 { color: var(--primary-color); margin: 0; }
-        .character-card .char-title { color: var(--secondary-color); font-weight: 600; margin: 5px 0 15px 0; }
+        .character-card h3 { color: var(--primary-color); margin: 0; justify-content: left; }
         .char-lore-link { display: inline-block; background-color: var(--secondary-color); color: var(--bg-color); padding: 8px 15px; border-radius: 20px; text-decoration: none; font-weight: bold; transition: all 0.2s; }
         .char-lore-link:hover { background-color: var(--primary-color); transform: scale(1.05); }
 
@@ -70,51 +64,25 @@
         .lore-entry { display: flex; flex-wrap: wrap; align-items: center; gap: 40px; margin-bottom: 50px; }
         .lore-entry .lore-image { flex: 1 1 300px; height: 400px; background-size: cover; background-position: center; border-radius: 20px; box-shadow: var(--shadow); border: 6px solid var(--surface-color); }
         .lore-entry .lore-text { flex: 2 1 400px; text-align: left; }
-
-        /* Halloween Code Styles */
-        .code-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 30px; }
-        .code-card { background-color: var(--bg-color); padding: 20px; border-radius: 20px; border: 2px dashed var(--secondary-color); box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05); }
-        .code-card .code-prize { font-weight: bold; color: var(--primary-color); font-size: 1.2em; }
-        .code-card .game-code { font-family: monospace; font-size: 1.5em; font-weight: bold; background: var(--surface-color); padding: 10px; border-radius: 10px; transition: filter 0.5s ease; user-select: none; }
-        .code-card .game-code.blurred { filter: blur(8px); }
-        .code-card .code-timer { font-weight: 600; }
-
-        /* --- 🫧 Bubble Styles 🫧 --- */
-        .bubble-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -2; }
-        .bubble {
-            position: absolute;
-            background-color: rgba(var(--primary-color-rgb), 0.3); /* Get RGB value for opacity */
-            border-radius: 50%;
-            animation: floatBubble 4s infinite; /* Basic float animation */
-            cursor: pointer;
-            box-shadow: 0 2px 8px rgba(var(--primary-color-rgb), 0.2);
-            opacity: 0; /* Start invisible */
-            animation-delay: var(--bubble-delay); /* Different start times */
-            animation-duration: var(--bubble-duration); /* Different speeds */
-        }
-        @keyframes floatBubble {
-            0% { transform: translateY(100vh) scale(1); opacity: 0.5; }
-            100% { transform: translateY(-10vh) scale(1.3); opacity: 0; }
-        }
-        .bubble.popped {
-            animation: pop 0.3s ease-out forwards;
-        }
-        @keyframes pop {
-            0% { transform: scale(1); opacity: 1; }
-            100% { transform: scale(0); opacity: 0; }
-        }
-
-        /* --- Emoji Styling --- */
-        h1, h2, h3 { display: flex; align-items: center; justify-content: center; gap: 0.5em; }
-        .section > h2 { justify-content: left; }
-        .character-card h3 { justify-content: left; }
+        
+        /* Sets & Codes Styles */
+        .sets-grid, .code-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .set-card, .code-card { background-color: var(--bg-color); padding: 20px; border-radius: 20px; border: 2px dashed var(--secondary-color); }
+        .set-card { padding: 0; } .set-card .info { padding: 20px; }
+        .game-code.blurred { filter: blur(8px); transition: filter 0.5s ease; user-select: none; }
+        .set-timer, .code-timer { font-family: monospace; font-weight: 600; }
+        
+        /* Bubble Styles */
+        .bubble-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+        .bubble { position: absolute; background: color-mix(in srgb, var(--primary-color) 30%, transparent); border-radius: 50%; animation: floatBubble 10s linear infinite; pointer-events: auto; }
+        @keyframes floatBubble { 0% { transform: translateY(100vh); opacity: 1; } 100% { transform: translateY(-10vh); opacity: 0; } }
+        .bubble.popped { animation: pop 0.3s ease-out forwards; }
+        @keyframes pop { to { transform: scale(1.5); opacity: 0; } }
 
     </style>
 </head>
 <body>
-
-    <div class="bubble-container">
-        </div>
+    <div class="bubble-container"></div>
     <div id="custom-cursor"></div>
     <nav>
         <ul>
@@ -133,112 +101,95 @@
              <h1>Welcome to Sweeties Boutique! 🫧</h1>
              <p>Your magical unicorn dress-up adventure awaits!</p>
              <a href="#" class="play-button" target="_blank">Play Now!</a>
-
-             <div class="section about-section">
+             <div class="section">
                 <h2>✨ Your Magical Adventure ✨</h2><div class="cute-divider"></div>
                 <p>Collect Clovers 🍀 to buy the most beautiful accessories in the entire galaxy! 🌌</p>
-                </div>
-
-             <div class="section character-section">
+             </div>
+             <div class="section">
                 <h2>💖 Meet the Characters! 💖</h2><div class="cute-divider"></div>
                 <div class="character-grid">
-                    <div class="character-card">
-                        <div class="char-image" style="background-image: url('https://placehold.co/600x800/6AAB9C/FFF9F5?text=Aurora&font=lobster')"></div>
-                        <div class="char-info">
-                            <h3>Aurora 🌟</h3>
-                            <p class="char-title">The Star Guardian</p>
-                            <a href="#lore" data-scrollto="lore-aurora" class="char-lore-link">Read More...</a>
-                        </div>
-                    </div>
-                    <div class="character-card">
-                        <div class="char-image" style="background-image: url('https://placehold.co/600x800/F0E68C/4A4A4A?text=Clover&font=lobster')"></div>
-                        <div class="char-info">
-                            <h3>Clover 🍀</h3>
-                            <p class="char-title">The Lucky Companion</p>
-                            <a href="#lore" data-scrollto="lore-clover" class="char-lore-link">Read More...</a>
-                        </div>
-                    </div>
+                    <div class="character-card"><div class="char-image" style="background-image: url('https://placehold.co/600x800/6AAB9C/FFF9F5?text=Aurora&font=lobster')"></div><div class="char-info"><h3>Aurora 🌟</h3><p>The Star Guardian</p><a href="#lore" data-scrollto="lore-aurora" class="char-lore-link">Read More...</a></div></div>
+                    <div class="character-card"><div class="char-image" style="background-image: url('https://placehold.co/600x800/F0E68C/4A4A4A?text=Clover&font=lobster')"></div><div class="char-info"><h3>Clover 🍀</h3><p>The Lucky Companion</p><a href="#lore" data-scrollto="lore-clover" class="char-lore-link">Read More...</a></div></div>
                 </div>
              </div>
-
-             <div class="section community-section">
-                <h2>🦄 Join Luckycorn Studios! 🦄</h2>
+             <div class="section">
+                <h2>🦄 Join Luckycorn Studios! 🦄</h2><div class="cute-divider"></div>
                 <p>Become an official Sweetie by joining our Roblox Group for exclusive news and items!</p>
                 <a href="#" class="play-button" target="_blank">Join the Group!</a>
              </div>
         </main>
-
+        
         <main id="lore-page">
             <div class="section">
-                <h2>📚 The Lore of Sweeties Boutique 📚</h2>
+                <h2>📚 The Lore of Sweeties Boutique 📚</h2><div class="cute-divider"></div>
+                <div id="lore-aurora" class="lore-entry"><div class="lore-image" style="background-image: url('https://placehold.co/600x800/6AAB9C/FFF9F5?text=Aurora&font=lobster')"></div><div class="lore-text"><h2>Aurora, The Star Guardian 🌟</h2><p>Born from a fallen star ✨ that landed in a field of cosmic dust, Aurora is the gentle guardian of the Cosmic Heart 💖. It is her sworn duty to protect the balance of magic throughout the galaxy and ensure that the power of creativity and friendship never fades.</p><p>She uses her celestial powers to weave starlight into beautiful accessories, which she shares with those she deems worthy. Her lucky mirror 🪞 can open pathways to any place she has visited, allowing her and her friends to travel in the blink of an eye.</p></div></div>
                 <div class="cute-divider"></div>
+                <div id="lore-clover" class="lore-entry"><div class="lore-image" style="background-image: url('https://placehold.co/600x800/F0E68C/4A4A4A?text=Clover&font=lobster')"></div><div class="lore-text"><h2>Clover, The Lucky Companion 🍀</h2><p>Not just any unicorn 🦄, Clover was found at the end of a rainbow 🌈 that touched a four-leaf clover field on a forgotten asteroid. As a result, he is bursting with good luck and fortune, which he loves to share!</p><p>He can sniff out hidden clovers and rare materials across the galaxy, making him the perfect companion for any aspiring boutique owner. His cheerful attitude and unwavering loyalty make him Aurora's most trusted friend.</p></div></div>
+            </div>
+        </main>
 
-                <div id="lore-aurora" class="lore-entry">
-                    <div class="lore-image" style="background-image: url('https://placehold.co/600x800/6AAB9C/FFF9F5?text=Aurora&font=lobster')"></div>
-                    <div class="lore-text">
-                        <h2>Aurora, The Star Guardian 🌟</h2>
-                        <p>Born from a fallen star ✨ that landed in a field of cosmic dust, Aurora is the gentle guardian of the Cosmic Heart 💖. It is her sworn duty to protect the balance of magic throughout the galaxy and ensure that the power of creativity and friendship never fades.</p>
-                        <p>She uses her celestial powers to weave starlight into beautiful accessories, which she shares with those she deems worthy. Her lucky mirror 🪞 can open pathways to any place she has visited, allowing her and her friends to travel in the blink of an eye.</p>
-                    </div>
-                </div>
-
-                <div class="cute-divider"></div>
-
-                <div id="lore-clover" class="lore-entry">
-                    <div class="lore-image" style="background-image: url('https://placehold.co/600x800/F0E68C/4A4A4A?text=Clover&font=lobster')"></div>
-                    <div class="lore-text">
-                        <h2>Clover, The Lucky Companion 🍀</h2>
-                        <p>Not just any unicorn 🦄, Clover was found at the end of a rainbow 🌈 that touched a four-leaf clover field on a forgotten asteroid. As a result, he is bursting with good luck and fortune, which he loves to share!</p>
-                        <p>He can sniff out hidden clovers and rare materials across the galaxy, making him the perfect companion for any aspiring boutique owner. His cheerful attitude and unwavering loyalty make him Aurora's most trusted friend.</p>
-                    </div>
-                </div>
-
+        <main id="sets-page">
+            <div class="section">
+                <h2>🎃 Spooky Upcoming Sets! 🎃</h2><div class="cute-divider"></div>
+                <div class="sets-grid"></div>
             </div>
         </main>
 
         <main id="updates-page">
             <div class="section">
-                <h2>🎃 Halloween Codes! 👻</h2>
-                <p>New spooky codes will be revealed throughout October! Check back often for treats!</p>
-                <div class="code-grid">
+                <h2>Game Updates</h2><div class="cute-divider"></div>
                 </div>
+            <div class="section">
+                <h2>👻 Halloween Codes! 👻</h2><div class="cute-divider"></div>
+                <p>New spooky codes will be revealed throughout October! Check back often for treats!</p>
+                <div class="code-grid"></div>
+            </div>
+        </main>
+        
+        <main id="creators-page">
+            <div class="section">
+                <h2>✨ Meet the Creators! ✨</h2><div class="cute-divider"></div>
+                </div>
+        </main>
+        
+        <main id="feed-page">
+            <div class="section">
+                <h2>🐦 Live from Twitter/X! 🐦</h2><div class="cute-divider"></div>
+                <div id="twitter-feed-container"></div>
             </div>
         </main>
 
-        </div>
-
+    </div>
     <footer></footer>
-
+    
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // --- Theme Engine (Unchanged) ---
+            // --- THEME ENGINE ---
             const themeToggle = document.getElementById('theme-toggle');
-            const toggleIcon = themeToggle.querySelector('i');
             function getTheme(date) {
-                const month = date.getMonth(); const day = date.getDate();
-                if (month === 9) return 'halloween'; // Force Halloween theme for October
-                // Other holiday and season logic...
+                const month = date.getMonth();
+                if (month === 9) return 'halloween'; // October
                 if (month >= 8 && month <= 10) return 'autumn';
                 return 'summer'; // Default
             }
             function applyTheme(mode) {
                 document.body.classList.toggle('dark-mode', mode === 'dark');
-                toggleIcon.className = mode === 'dark' ? 'ph-moon' : 'ph-sun';
                 localStorage.setItem('themeMode', mode);
+                document.getElementById('theme-toggle').innerHTML = `<i class="ph-${mode === 'dark' ? 'moon' : 'sun'}"></i>`;
+                // Reload Twitter feed with correct theme
+                const twitterContainer = document.getElementById('twitter-feed-container');
+                if(twitterContainer && typeof twttr !== 'undefined') {
+                    twitterContainer.innerHTML = '';
+                    twttr.widgets.createTimeline({ sourceType: "profile", screenName: "PlaySweetiesB" }, twitterContainer, { theme: mode });
+                }
             }
             document.body.className = document.body.className.replace(/theme-[\w-]+/g, '');
-            const theme = getTheme(new Date());
-            document.body.classList.add(`theme-${theme}`);
-            // Get the RGB values of the primary color for the bubbles
-            const primaryColorStyle = getComputedStyle(document.documentElement).getPropertyValue('--primary-color');
-            const primaryColorRGB = primaryColorStyle.substring(4, primaryColorStyle.length - 1);
-            document.documentElement.style.setProperty('--primary-color-rgb', primaryColorRGB);
-
+            document.body.classList.add(`theme-${getTheme(new Date())}`);
             const savedMode = localStorage.getItem('themeMode') || 'light';
             applyTheme(savedMode);
             themeToggle.addEventListener('click', () => applyTheme(document.body.classList.contains('dark-mode') ? 'light' : 'dark'));
 
-            // --- Page Navigation (Unchanged) ---
+            // --- NAVIGATION ---
             const navLinks = document.querySelectorAll('.nav-link');
             const pages = document.querySelectorAll('main');
             function showPage(pageId, scrollToId) {
@@ -250,97 +201,86 @@
                         targetPage.style.display = 'block';
                         setTimeout(() => {
                             targetPage.classList.add('active');
-                            if (scrollToId) {
-                                document.getElementById(scrollToId)?.scrollIntoView({ behavior: 'smooth' });
-                            }
+                            if (scrollToId) document.getElementById(scrollToId)?.scrollIntoView({ behavior: 'smooth' });
                         }, 20);
                     }
                 }, 250);
-                navLinks.forEach(l => {l.classList.remove('active'); if(l.getAttribute('href')===pageId) l.classList.add('active');});
+                navLinks.forEach(l => { l.classList.remove('active'); if(l.getAttribute('href')===pageId) l.classList.add('active'); });
             }
             navLinks.forEach(link => link.addEventListener('click', (e) => { e.preventDefault(); showPage(link.getAttribute('href')); window.history.pushState(null, '', link.getAttribute('href')); }));
             document.querySelectorAll('.char-lore-link').forEach(link => {
-                link.addEventListener('click', e => {
-                    e.preventDefault();
-                    const pageId = link.getAttribute('href');
-                    const scrollToId = link.dataset.scrollto;
-                    showPage(pageId, scrollToId);
-                    window.history.pushState(null, '', `${pageId}#${scrollToId}`);
-                });
+                link.addEventListener('click', e => { e.preventDefault(); showPage(link.getAttribute('href'), link.dataset.scrollto); window.history.pushState(null, '', `${link.getAttribute('href')}#${link.dataset.scrollto}`); });
             });
-            const initialPage = window.location.hash.split('#')[0] || '#home';
+            const initialPage = window.location.hash ? `#${window.location.hash.split('#')[1]}` : '#home';
             showPage(initialPage);
 
-            // --- ✨ Halloween Code Timer Logic (Unchanged) ✨ ---
-            const codeContainer = document.querySelector('#updates-page .code-grid');
-            if (codeContainer) {
-                const halloweenCodes = [
-                    { id: 'code1', prize: '500 Clovers 🍀', code: 'SPOOKYCLOVER', revealDate: '2025-10-01T12:00:00' },
-                    { id: 'code2', prize: 'Ghostly Aura Effect ✨', code: 'BOO2025', revealDate: '2025-10-07T12:00:00' },
-                    { id: 'code3', prize: '1,000 Clovers 🍀', code: 'PUMPKINPATCH', revealDate: '2025-10-15T12:00:00' },
-                    { id: 'code4', prize: 'Witch Hat Accessory 🧙', code: 'HOCUSPOCUS', revealDate: '2025-10-24T12:00:00' },
-                ];
-                let activeCodeTimers = [];
-
-                codeContainer.innerHTML = ''; // Clear container
-                halloweenCodes.forEach(code => {
+            // --- SETS & CODES TIMERS ---
+            function setupTimers(containerSelector, data, type) {
+                const container = document.querySelector(containerSelector);
+                if (!container) return;
+                let activeTimers = [];
+                container.innerHTML = '';
+                data.forEach(item => {
                     const card = document.createElement('div');
-                    card.className = 'code-card';
-                    const revealTimestamp = new Date(code.revealDate).getTime();
+                    const revealTimestamp = new Date(item.revealDate).getTime();
                     const isRevealed = new Date().getTime() >= revealTimestamp;
-
-                    card.innerHTML = `
-                        <p class="code-prize">${code.prize}</p>
-                        <p class="game-code ${isRevealed ? '' : 'blurred'}" id="${code.id}">${code.code}</p>
-                        <p class="code-timer" id="timer-${code.id}">${isRevealed ? 'Available Now!' : 'Calculating...'}</p>
-                    `;
-                    codeContainer.appendChild(card);
-
-                    if (!isRevealed) {
-                        activeCodeTimers.push({ ...code, revealTimestamp });
+                    if (type === 'set') {
+                        card.className = 'set-card';
+                        card.innerHTML = `<div class="image-placeholder" style="background-image: url('https://placehold.co/400x300/e57a44/fff8f0?text=?')"></div><div class="info"><h3>???</h3><p class="set-timer" id="timer-${item.id}">Calculating...</p></div>`;
+                    } else { // code
+                        card.className = 'code-card';
+                        card.innerHTML = `<p class="code-prize">${item.prize}</p><p class="game-code ${isRevealed ? '' : 'blurred'}" id="${item.id}">${item.code}</p><p class="code-timer" id="timer-${item.id}">${isRevealed ? 'Available Now!' : 'Calculating...'}</p>`;
                     }
+                    container.appendChild(card);
+                    if (!isRevealed) activeTimers.push({ ...item, revealTimestamp });
                 });
 
-                function updateCodeTimers() {
-                    if (activeCodeTimers.length === 0) return;
-                    activeCodeTimers = activeCodeTimers.filter(timer => {
+                function updateTimers() {
+                    activeTimers = activeTimers.filter(timer => {
                         const distance = timer.revealTimestamp - new Date().getTime();
                         if (distance <= 0) {
-                            document.getElementById(timer.id)?.classList.remove('blurred');
-                            const timerEl = document.getElementById(`timer-${timer.id}`);
-                            if(timerEl) timerEl.textContent = 'Available Now!';
-                            return false; // Remove timer
+                            const cardEl = document.getElementById(timer.id)?.closest('.set-card, .code-card');
+                            if (cardEl) {
+                                if (type === 'set') {
+                                    cardEl.querySelector('h3').textContent = timer.name;
+                                    cardEl.querySelector('.image-placeholder').style.backgroundImage = `url('https://placehold.co/400x300/f38f5f/fff8f0?text=${encodeURIComponent(timer.icon)}')`;
+                                    cardEl.querySelector('.set-timer').textContent = timer.desc;
+                                } else {
+                                    document.getElementById(timer.id)?.classList.remove('blurred');
+                                    document.getElementById(`timer-${timer.id}`).textContent = 'Available Now!';
+                                }
+                            }
+                            return false;
                         }
-                        const d = Math.floor(distance / 864e5), h = Math.floor((distance % 864e5) / 36e5), m = Math.floor((distance % 36e5) / 6e4), s = Math.floor((distance % 6e4) / 1e3);
+                        const d = Math.floor(distance/864e5), h = Math.floor((distance%864e5)/36e5), m = Math.floor((distance%36e5)/6e4), s = Math.floor((distance%6e4)/1e3);
                         const timerEl = document.getElementById(`timer-${timer.id}`);
                         if(timerEl) timerEl.textContent = `Reveals in: ${d}d ${h}h ${m}m ${s}s`;
-                        return true; // Keep timer
+                        return true;
                     });
                 }
-                setInterval(updateCodeTimers, 1000);
+                setInterval(updateTimers, 1000);
             }
+            const setsData = [{id:'set1', name:'Pumpkin Spice', desc:'A cozy autumn set.', icon:'🎃', revealDate:'2025-10-01T12:00:00'}, {id:'set2', name:'Witchy Wonder', desc:'An enchanting look.', icon:'🧙', revealDate:'2025-10-08T12:00:00'}];
+            const codesData = [{id:'code1', prize:'500 Clovers 🍀', code:'SPOOKYCLOVER', revealDate:'2025-10-01T12:00:00'}, {id:'code2', prize:'Ghostly Aura ✨', code:'BOO2025', revealDate:'2025-10-15T12:00:00'}];
+            setupTimers('#sets-page .sets-grid', setsData, 'set');
+            setupTimers('#updates-page .code-grid', codesData, 'code');
 
-            // --- 🫧 Bubble Generation and Interaction 🫧 ---
+            // --- BUBBLE GENERATOR ---
             const bubbleContainer = document.querySelector('.bubble-container');
-            const numberOfBubbles = 30;
-
-            for (let i = 0; i < numberOfBubbles; i++) {
+            for (let i = 0; i < 20; i++) {
                 const bubble = document.createElement('div');
                 bubble.className = 'bubble';
-                const size = Math.random() * 20 + 20; // Random size between 20px and 40px
+                const size = Math.random() * 40 + 20;
                 bubble.style.width = `${size}px`;
                 bubble.style.height = `${size}px`;
-                bubble.style.left = `${Math.random() * 100}vw`; // Random horizontal position
-                const delay = Math.random() * 5; // Random start delay
-                const duration = Math.random() * 3 + 4; // Random duration
-                bubble.style.setProperty('--bubble-delay', `${delay}s`);
-                bubble.style.setProperty('--bubble-duration', `${duration}s`);
-                bubbleContainer.appendChild(bubble);
-
-                bubble.addEventListener('click', function() {
-                    this.classList.add('popped');
-                    setTimeout(() => this.remove(), 300); // Remove after pop animation
+                bubble.style.left = `${Math.random() * 100}%`;
+                bubble.style.animationDuration = `${Math.random() * 5 + 5}s`;
+                bubble.style.animationDelay = `${Math.random() * 5}s`;
+                bubble.addEventListener('click', () => {
+                    bubble.classList.add('popped');
+                    setTimeout(() => bubble.remove(), 300);
                 });
+                bubbleContainer.appendChild(bubble);
             }
         });
     </script>
