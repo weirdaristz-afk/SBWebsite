@@ -3,62 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sweeties Boutique - A Roblox Unicorn Game</title>
-    <!-- Cuter Fonts: Nunito and Fredoka One from Google Fonts -->
+    <title>Sweeties Boutique - A Magical Roblox Game</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-    <!-- Icon Library for cute icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600;700&family=Lilita+One&family=Poppins:wght@400;600;700&family=Lobster&family=Roboto+Slab:wght@400;700&family=Mountains+of+Christmas:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    
     <script src="https://unpkg.com/phosphor-icons"></script>
+
     <style>
-        /* --- New Halloween Vibe Theme --- */
+        /* --- Base Styles (Applied to All Themes) --- */
         :root {
-            --bg-color: #121212; /* Deep Dark Background */
-            --surface-color: #1e1e1e; /* Dark Grey Surface */
-            --primary-color: #ff7518; /* Pumpkin Orange */
-            --secondary-color: #9400d3; /* Dark Violet/Purple */
-            --accent-color: #50c878; /* Emerald/Slime Green */
-            --text-color: #f0f0f0; /* Off-white */
-            --header-font: 'Fredoka One', cursive;
-            --body-font: 'Nunito', sans-serif;
-            --shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            /* These will be overridden by the seasonal themes */
+            --bg-color: #fdf6e3;
+            --surface-color: #fffaf0;
+            --primary-color: #ffb6c1;
+            --secondary-color: #87ceeb;
+            --accent-color: #98fb98;
+            --text-color: #5d5d5d;
+            --header-font: 'Pacifico', cursive;
+            --body-font: 'Quicksand', sans-serif;
+            --shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
         }
+
         html {
             scroll-behavior: smooth;
         }
+
         body {
             background-color: var(--bg-color);
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%239400d3' fill-opacity='0.08'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.6l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
             color: var(--text-color);
             font-family: var(--body-font);
             margin: 0;
             padding: 0;
             text-align: center;
+            transition: background-color 0.5s ease, color 0.5s ease;
+            cursor: none; /* Hide default cursor */
         }
 
-        /* --- Navigation Bar --- */
+        /* --- ✨ Seasonal Theme Definitions ✨ --- */
+        
+        /* 🌸 Spring Theme */
+        body.theme-spring {
+            --bg-color: #fdf6f9; /* Soft Pinkish White */
+            --surface-color: #ffffff;
+            --primary-color: #ff85a2; /* Watermelon Pink */
+            --secondary-color: #8de4ff; /* Light Sky Blue */
+            --accent-color: #b9ffb7; /* Mint Green */
+            --text-color: #5c5255;
+            --header-font: 'Pacifico', cursive;
+            --body-font: 'Quicksand', sans-serif;
+        }
+
+        /* ☀️ Summer Theme */
+        body.theme-summer {
+            --bg-color: #fffbeb; /* Light Yellow */
+            --surface-color: #ffffff;
+            --primary-color: #ff6b6b; /* Coral Red */
+            --secondary-color: #4ecdc4; /* Turquoise */
+            --accent-color: #f9d423; /* Bright Yellow */
+            --text-color: #4a4a4a;
+            --header-font: 'Lilita One', cursive;
+            --body-font: 'Poppins', sans-serif;
+        }
+
+        /* 🍂 Autumn Theme */
+        body.theme-autumn {
+            --bg-color: #fff8f0; /* Creamy Beige */
+            --surface-color: #ffffff;
+            --primary-color: #e57a44; /* Burnt Orange */
+            --secondary-color: #8c5e58; /* Warm Brown */
+            --accent-color: #a33333; /* Deep Red */
+            --text-color: #5a4e46;
+            --header-font: 'Lobster', cursive;
+            --body-font: 'Roboto Slab', serif;
+        }
+        
+        /* ❄️ Winter Theme */
+        body.theme-winter {
+            --bg-color: #f0f8ff; /* Alice Blue */
+            --surface-color: #ffffff;
+            --primary-color: #7d97f8; /* Periwinkle Blue */
+            --secondary-color: #c4a7e7; /* Lavender */
+            --accent-color: #f8b8d8; /* Soft Pink */
+            --text-color: #5b647c;
+            --header-font: 'Mountains of Christmas', cursive;
+            --body-font: 'Lato', sans-serif;
+        }
+
+        /* --- Animated Background --- */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1; /* Place behind all content */
+        }
+        
+        /* --- Cute Custom Cursor --- */
+        #custom-cursor {
+            width: 30px;
+            height: 30px;
+            border: 2px solid var(--primary-color);
+            border-radius: 50%;
+            position: fixed;
+            transform: translate(-50%, -50%);
+            pointer-events: none; /* Let clicks pass through */
+            z-index: 9999;
+            transition: width 0.2s, height 0.2s, border-width 0.2s, background-color 0.2s;
+        }
+        body:hover #custom-cursor {
+            background-color: rgba(255, 255, 255, 0); /* Make it visible */
+        }
+        #custom-cursor.pointer {
+            width: 40px;
+            height: 40px;
+            background-color: var(--accent-color-transparent, rgba(152, 251, 152, 0.3));
+        }
+
+        /* General Styling using variables */
         nav {
-            background-color: rgba(30, 30, 30, 0.8);
+            background-color: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(10px);
             position: sticky;
             top: 0;
             width: 100%;
             z-index: 1000;
-            box-shadow: var(--shadow);
             padding: 10px 0;
-            border-bottom: 1px solid #333;
-        }
-        nav ul {
-            margin: 0;
-            padding: 0;
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 10px;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
         nav a {
-            color: var(--text-color);
+            color: var(--primary-color);
             text-decoration: none;
             font-weight: 700;
             font-size: 1.1em;
@@ -69,67 +145,45 @@
             align-items: center;
             gap: 8px;
         }
-        nav a:hover {
-            background-color: var(--accent-color);
-            color: #fff;
-        }
-        nav a.active {
+        nav a:hover, nav a.active {
             background-color: var(--primary-color);
             color: #fff;
             transform: scale(1.1);
         }
-        nav i {
-            font-size: 1.4em;
-        }
+        nav ul { list-style: none; margin: 0; padding: 0; display: flex; justify-content: center; flex-wrap: wrap; gap: 10px;}
+        nav i { font-size: 1.4em; }
 
-        /* --- Page Container & Transitions --- */
-        .container {
-            padding: 20px;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-        main {
-            display: none; /* All pages hidden by default */
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-        }
-        main.active {
-            display: block; /* Show only the active page */
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .container { padding: 20px; max-width: 1100px; margin: 0 auto; }
+
+        main { display: none; opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease-out, transform 0.5s ease-out; }
+        main.active { display: block; opacity: 1; transform: translateY(0); }
         
-        h1, h2, h3 {
-            font-family: var(--header-font);
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
         }
         h1 {
-            font-size: clamp(2.5rem, 10vw, 4rem);
+            font-family: var(--header-font);
+            font-size: clamp(3rem, 12vw, 5.5rem);
             color: var(--primary-color);
-            text-shadow: 2px 2px 0 #000, 4px 4px 0 var(--secondary-color);
-            margin: 20px 0;
+            text-shadow: 3px 3px 0 var(--secondary-color);
+            margin: 40px 0;
+            animation: float 6s ease-in-out infinite;
         }
-        h2 {
-            font-size: 2.5em;
-            color: var(--primary-color);
-            margin-bottom: 30px;
-        }
-        p {
-            line-height: 1.8;
-            font-size: 1.1em;
-            max-width: 700px;
-            margin: 0 auto 20px auto;
-        }
+        h2 { font-family: var(--header-font); font-size: 2.5em; color: var(--primary-color); margin-bottom: 30px; }
+        h3 { font-family: var(--header-font); }
+        p { line-height: 1.8; font-size: 1.1em; max-width: 700px; margin: 0 auto 20px auto; }
+        
         .section {
             background: var(--surface-color);
             padding: 40px;
             margin: 40px 0;
             border-radius: 24px;
             box-shadow: var(--shadow);
-            border: 1px solid #333;
+            border: 1px solid rgba(0,0,0,0.05);
         }
 
-        /* --- Buttons & Links --- */
         .play-button {
             background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
             color: #fff;
@@ -139,128 +193,77 @@
             font-weight: 700;
             font-family: var(--header-font);
             border-radius: 50px;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: transform 0.3s, box-shadow 0.3s;
             display: inline-block;
             margin-top: 20px;
             border: none;
-            box-shadow: 0 5px 20px rgba(255, 117, 24, 0.4);
+            box-shadow: 0 5px 20px color-mix(in srgb, var(--primary-color) 40%, transparent);
         }
         .play-button:hover {
-            transform: scale(1.05) rotate(-2deg);
+            transform: scale(1.05) rotate(-3deg);
+            box-shadow: 0 10px 30px color-mix(in srgb, var(--secondary-color) 50%, transparent);
         }
 
-        /* --- Countdown --- */
         #countdown {
             font-family: var(--header-font);
             font-size: 2.2em;
             color: var(--text-color);
-            margin-top: 10px;
-            background: var(--surface-color);
+            background: color-mix(in srgb, var(--bg-color) 80%, black);
             padding: 20px;
             border-radius: 20px;
-            box-shadow: inset 0 2px 10px rgba(0,0,0,0.2);
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.05);
         }
 
-        /* --- Coming Soon Sets --- */
-        .sets-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-        }
+        .sets-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
         .set-card {
             background-color: var(--bg-color);
             border-radius: 20px;
             overflow: hidden;
             transition: all 0.3s ease;
-            border: 2px solid #333;
-            box-shadow: var(--shadow);
+            border: 2px solid rgba(0,0,0,0.08);
+            box-shadow: none;
         }
-        .set-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--primary-color);
-        }
+        .set-card:hover { transform: translateY(-10px); border-color: var(--primary-color); box-shadow: var(--shadow); }
         .set-card .image-placeholder {
-            background-color: #111;
-            width: 100%;
-            height: 220px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4em;
-            font-family: var(--header-font);
-            color: var(--secondary-color);
-            transition: all 0.5s ease;
+            background-color: color-mix(in srgb, var(--bg-color) 50%, black);
+            width: 100%; height: 220px; display: flex; align-items: center; justify-content: center;
+            font-size: 4em; font-family: var(--header-font); color: var(--secondary-color); transition: all 0.5s ease;
         }
-        .set-card .info {
-            padding: 20px;
-        }
-        .set-card h3 {
-            margin: 0 0 10px 0;
-            color: var(--primary-color);
-        }
-        .set-card .reveal-date {
-            font-size: 0.9em;
-            font-weight: 600;
-            color: var(--secondary-color);
-        }
-        .hidden-set .image-placeholder {
-            filter: blur(15px) grayscale(50%);
-            color: #444;
-        }
-        .revealed {
-            border-color: var(--accent-color);
-        }
-        .revealed .image-placeholder {
-            filter: none;
-        }
+        .set-card .info { padding: 20px; }
+        .set-card h3 { margin: 0 0 10px 0; color: var(--primary-color); }
+        .set-card .reveal-date { font-size: 0.9em; font-weight: 600; color: var(--secondary-color); }
+        .hidden-set .image-placeholder { filter: blur(15px) grayscale(50%); color: #bbb; }
+        .revealed { border-color: var(--accent-color); }
+        .revealed .image-placeholder { filter: none; }
 
-        /* --- Creators & Other Games --- */
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-        }
+        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; }
         .creator-card, .game-card {
-            background: var(--surface-color);
-            padding: 20px;
-            border-radius: 20px;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s ease;
-            border: 1px solid #333;
+            background: var(--surface-color); padding: 20px; border-radius: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.05);
         }
-        .creator-card:hover, .game-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary-color);
-        }
+        .creator-card:hover, .game-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
         .creator-card h3 { color: var(--primary-color); margin-top: 0; }
         .creator-card p { font-size: 1em; margin-bottom: 15px; }
-        .creator-card a {
-            color: #fff;
-            background-color: var(--secondary-color);
-            text-decoration: none;
-            padding: 8px 15px;
-            border-radius: 50px;
-            font-weight: 600;
-        }
-        .game-card img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 15px;
-            margin-bottom: 15px;
-        }
+        .creator-card a { color: #fff; background-color: var(--secondary-color); text-decoration: none; padding: 8px 15px; border-radius: 50px; font-weight: 600; }
+        .game-card img { width: 100%; height: 150px; object-fit: cover; border-radius: 15px; margin-bottom: 15px; }
         .game-card h3 { color: var(--text-color); margin: 0; font-family: var(--body-font); font-weight: 700;}
+        .update-entry ul { text-align: left; list-style-type: '🦄'; padding-left: 30px; }
+        .update-entry ul li { padding-left: 10px; margin-bottom: 10px; }
 
-        /* --- Footer --- */
-        footer {
-            padding: 40px 20px;
-            margin-top: 50px;
-            color: #666;
-        }
+        footer { padding: 40px 20px; margin-top: 50px; color: color-mix(in srgb, var(--text-color) 60%, transparent); }
         footer a { color: var(--primary-color); }
+        
+        /* Ensure page navigation works with the cursor */
+        a, button, .play-button { cursor: none; }
+
     </style>
 </head>
 <body>
+
+    <div id="particles-js"></div>
+    
+    <div id="custom-cursor"></div>
 
     <nav>
         <ul>
@@ -273,8 +276,6 @@
     </nav>
 
     <div class="container">
-
-        <!-- HOME PAGE -->
         <main id="home-page" class="active">
             <h1>Sweeties Boutique</h1>
             <p>The Halloween Update is coming!</p>
@@ -287,19 +288,19 @@
                 <div class="card-grid">
                     <a href="https://www.roblox.com/games/5476651239/Fluffy-Hills-Summer" target="_blank" style="text-decoration:none;">
                         <div class="game-card">
-                            <img src="https://placehold.co/400x200/9400D3/FFFFFF?text=Fluffy+Hills" alt="Fluffy Hills">
+                            <img src="https://placehold.co/400x200/4ecdc4/FFFFFF?text=Fluffy+Hills" alt="Fluffy Hills">
                             <h3>Fluffy Hills</h3>
                         </div>
                     </a>
                     <a href="https://www.roblox.com/games/12999258688/Glamour-Dolls-PRIDE-SET" target="_blank" style="text-decoration:none;">
                         <div class="game-card">
-                            <img src="https://placehold.co/400x200/FF7518/FFFFFF?text=Glamour+Dolls" alt="Glamour Dolls 🌸">
+                            <img src="https://placehold.co/400x200/ff6b6b/FFFFFF?text=Glamour+Dolls" alt="Glamour Dolls 🌸">
                             <h3>Glamour Dolls 🌸</h3>
                         </div>
                     </a>
                     <a href="https://www.roblox.com/games/18956320538/ANIMAL-EVENTS-Mermaid-Isle" target="_blank" style="text-decoration:none;">
                         <div class="game-card">
-                            <img src="https://placehold.co/400x200/50C878/FFFFFF?text=Mermaid+Isle" alt="Mermaid Isle">
+                            <img src="https://placehold.co/400x200/f9d423/FFFFFF?text=Mermaid+Isle" alt="Mermaid Isle">
                             <h3>Mermaid Isle</h3>
                         </div>
                     </a>
@@ -307,18 +308,15 @@
             </div>
         </main>
 
-        <!-- SETS PAGE -->
         <main id="sets-page">
             <div class="section">
                 <h2>Coming Soon Sets</h2>
                 <p>A new set will be revealed periodically! Check back often to see what's new!</p>
                 <div class="sets-grid">
-                    <!-- The 7 sets will be populated here by JavaScript -->
-                </div>
+                    </div>
             </div>
         </main>
 
-        <!-- UPDATES PAGE -->
         <main id="updates-page">
              <div class="section">
                 <h2>Past Game Updates</h2>
@@ -338,7 +336,6 @@
             </div>
         </main>
         
-        <!-- CREATORS PAGE -->
         <main id="creators-page">
             <div class="section">
                 <h2>Meet the Workers!</h2>
@@ -378,7 +375,6 @@
             </div>
         </main>
 
-        <!-- FEED PAGE -->
         <main id="feed-page">
              <div class="section">
                 <h2>Live from Twitter/X</h2>
@@ -396,35 +392,69 @@
         <p style="margin-top: 20px; font-size: 0.8em;">&copy; 2025 Sweeties Boutique. All Rights Reserved.</p>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+
+            // --- ✨ AUTO SEASONAL THEME ENGINE ✨ ---
+            function getSeason(date) {
+                const month = date.getMonth(); // 0-11
+                if (month >= 2 && month <= 4) return 'spring'; // Mar, Apr, May
+                if (month >= 5 && month <= 7) return 'summer'; // Jun, Jul, Aug
+                if (month >= 8 && month <= 10) return 'autumn'; // Sep, Oct, Nov
+                return 'winter'; // Dec, Jan, Feb
+            }
+
+            const currentSeason = getSeason(new Date());
+            document.body.className = `theme-${currentSeason}`;
+            
+            // Particle configurations for each season
+            const particleConfigs = {
+                spring: { particles: { number: { value: 30, density: { enable: true, value_area: 800 } }, color: { value: ["#ff85a2", "#b9ffb7", "#8de4ff"] }, shape: { type: "char", character: "🌸", "stroke": {"width": 1, "color": "#ffffff"} }, opacity: { value: 0.8, random: true }, size: { value: 16, random: true, anim: { enable: true, speed: 2, size_min: 10 } }, line_linked: { enable: false }, move: { enable: true, speed: 1, direction: "top", random: true, straight: false, out_mode: "out" } }, interactivity: { detect_on: "canvas", events: { onhover: { enable: false }, onclick: { enable: false } } } },
+                summer: { particles: { number: { value: 50 }, color: { value: "#f9d423" }, shape: { type: "circle" }, opacity: { value: 0.6, random: true, anim: { enable: true, speed: 1, opacity_min: 0.1 } }, size: { value: 4, random: true }, line_linked: { enable: false }, move: { enable: true, speed: 0.5, direction: "none", random: true, straight: false, out_mode: "out" } }, interactivity: { events: { onhover: { enable: true, mode: "bubble" }, onclick: { enable: true, mode: "repulse" } }, modes: { bubble: { distance: 100, size: 8, opacity: 0.8 }, repulse: { distance: 100 } } } },
+                autumn: { particles: { number: { value: 20 }, color: { value: ["#e57a44", "#a33333", "#8c5e58"] }, shape: { type: "char", character: "🍂", "stroke": {"width": 1, "color": "#ffffff"} }, opacity: { value: 0.8, random: true }, size: { value: 16, random: true, anim: { enable: true, speed: 1, size_min: 10 } }, line_linked: { enable: false }, move: { enable: true, speed: 2, direction: "bottom", random: true, straight: false, out_mode: "out" } }, interactivity: { events: { onhover: { enable: false }, onclick: { enable: false } } } },
+                winter: { particles: { number: { value: 150 }, color: { value: "#ffffff" }, shape: { type: "circle" }, opacity: { value: 0.5, random: true }, size: { value: 3, random: true }, line_linked: { enable: false }, move: { enable: true, speed: 1, direction: "bottom", random: false, straight: false, out_mode: "out" } }, interactivity: { events: { onhover: { enable: true, mode: "bubble" }, onclick: { enable: false } }, modes: { bubble: { distance: 200, size: 6, opacity: 0.8 } } } }
+            };
+
+            // Initialize the correct particle animation
+            particlesJS('particles-js', particleConfigs[currentSeason]);
+
+
+            // --- ✨ CUTE CURSOR LOGIC ✨ ---
+            const cursor = document.getElementById('custom-cursor');
+            const pointerElements = document.querySelectorAll('a, button, .play-button');
+
+            window.addEventListener('mousemove', e => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+            });
+            
+            pointerElements.forEach(el => {
+                el.addEventListener('mouseenter', () => cursor.classList.add('pointer'));
+                el.addEventListener('mouseleave', () => cursor.classList.remove('pointer'));
+            });
+
             // --- PAGE NAVIGATION LOGIC ---
             const navLinks = document.querySelectorAll('.nav-link');
             const pages = document.querySelectorAll('main');
 
             function showPage(pageId) {
                 pages.forEach(page => {
-                    // Remove active class to trigger fade out
                     page.classList.remove('active'); 
                 });
 
-                // Use a short timeout to allow the fade-out to happen before switching content
                 setTimeout(() => {
                     pages.forEach(page => {
-                        // Hide all pages
                         page.style.display = 'none'; 
-                        
-                        // Show the target page and trigger fade in
                         if (`#${page.id.replace('-page', '')}` === pageId) {
                             page.style.display = 'block';
-                            // A second timeout ensures the 'display: block' is rendered before adding the class
                             setTimeout(() => { 
                                 page.classList.add('active');
                             }, 20);
                         }
                     });
-                }, 250); // This duration should be less than the CSS transition time
-
+                }, 250);
 
                 navLinks.forEach(link => {
                     link.classList.remove('active');
@@ -439,14 +469,14 @@
                     e.preventDefault();
                     const targetId = link.getAttribute('href');
                     showPage(targetId);
-                    window.history.pushState(null, '', targetId); // Update URL without reloading
+                    window.history.pushState(null, '', targetId);
                 });
             });
             
-            // Show initial page based on URL hash or default to home
             const initialPage = window.location.hash || '#home';
             const targetPage = document.getElementById(initialPage.substring(1) + '-page');
             if (targetPage) {
+                pages.forEach(p => p.style.display = 'none');
                 targetPage.style.display = 'block';
                 setTimeout(() => {
                     targetPage.classList.add('active');
@@ -494,6 +524,7 @@
                     { id: 'set7', revealDate: 'Sep 5, 2025 12:00:00', name: 'Gamer Glitch Set', desc: 'Level up your style with this techy look.', icon: '🎮' }
                 ];
 
+                setsContainer.innerHTML = ''; // Clear container before populating
                 setsData.forEach(set => {
                     const revealTime = new Date(set.revealDate).getTime();
                     const isRevealed = now >= revealTime;
@@ -507,7 +538,7 @@
                         <div class="info">
                             <h3>${isRevealed ? set.name : '???'}</h3>
                             <p>${isRevealed ? set.desc : 'A mysterious new set is on its way...'}</p>
-                            <p class="reveal-date">Reveals on: ${set.revealDate.split(' ')[0]} ${set.revealDate.split(' ')[1]}</p>
+                            <p class="reveal-date">Reveals on: ${new Date(set.revealDate).toLocaleDateString()}</p>
                         </div>
                     `;
                     setsContainer.appendChild(card);
