@@ -102,7 +102,7 @@
     <div class="container">
         <main id="home-page" class="active">
              <h1>Sweeties Boutique</h1>
-             <p>A new season of cute sets is just around the corner!</p>
+             <p>The Halloween Update is coming!</p>
              <div id="countdown">Loading...</div>
              <a href="https://www.roblox.com/share?code=f99ee88b22bdd341beee2509c9b6a24f&type=ExperienceDetails" class="play-button" target="_blank">Play Now on Roblox</a>
              <div class="section">
@@ -209,23 +209,23 @@
             const mainCountdownElement = document.getElementById("countdown");
             if(mainCountdownElement) setInterval(() => {
                 const dist = mainCountDownDate - new Date().getTime();
-                if(dist<0){mainCountdownElement.innerHTML="THE UPDATE IS LIVE! 🎉";return;}
+                if(dist<0){mainCountdownElement.innerHTML="THE HALLOWEEN UPDATE IS LIVE! 🎃";return;}
                 const d=Math.floor(dist/864e5),h=Math.floor((dist%864e5)/36e5),m=Math.floor((dist%36e5)/6e4),s=Math.floor((dist%6e4)/1e3);
                 mainCountdownElement.innerHTML = `${d}d ${h}h ${m}m ${s}s`;
             }, 1000);
 
 
-            // --- ✨ COMING SOON SETS WITH TIMERS ✨ ---
+            // --- COMING SOON SETS WITH TIMERS (October Schedule) ---
             const setsContainer = document.querySelector('#sets-page .sets-grid');
             if (setsContainer) {
                 const setsData = [
-                    { id: 'set1', revealDate: '2025-08-05T12:00:00', name: 'Starfall Set', desc: 'A magical set forged from fallen stars.', icon: '✨' },
-                    { id: 'set2', revealDate: '2025-08-10T12:00:00', name: 'Midnight Set', desc: 'A spooky set for creatures of the night.', icon: '🦇' },
-                    { id: 'set3', revealDate: '2025-08-15T12:00:00', name: 'Bubblegum Set', desc: 'A sweet and sticky-fun ensemble.', icon: '🍬' },
-                    { id: 'set4', revealDate: '2025-08-20T12:00:00', name: 'Ocean Song Set', desc: 'Ride the waves with this beautiful set.', icon: '🌊' },
-                    { id: 'set5', revealDate: '2025-08-25T12:00:00', name: 'Forest Spirit Set', desc: 'Become one with nature.', icon: '🌿' },
-                    { id: 'set6', revealDate: '2025-09-01T12:00:00', name: 'Royal Tea Set', desc: 'Perfect for a party with your besties.', icon: '👑' },
-                    { id: 'set7', revealDate: '2025-09-05T12:00:00', name: 'Gamer Glitch Set', desc: 'Level up your style with this techy look.', icon: '🎮' }
+                    { id: 'set1', revealDate: '2025-10-01T12:00:00', name: 'Pumpkin Spice Set', desc: 'A cozy set perfect for autumn days.', icon: '🎃' },
+                    { id: 'set2', revealDate: '2025-10-05T12:00:00', name: 'Witchy Wonder Set', desc: 'Brew up some magical style with this enchanting look.', icon: '🧙' },
+                    { id: 'set3', revealDate: '2025-10-10T12:00:00', name: 'Ghostly Glow Set', desc: 'A spooky, spectral set that shimmers and shines.', icon: '👻' },
+                    { id: 'set4', revealDate: '2025-10-15T12:00:00', name: 'Vampire Velvet Set', desc: 'A luxurious and elegant set for creatures of the night.', icon: '🦇' },
+                    { id: 'set5', revealDate: '2025-10-20T12:00:00', name: 'Candy Corn Craze', desc: 'A sweet and colorful set inspired by a Halloween classic.', icon: '🍬' },
+                    { id: 'set6', revealDate: '2025-10-25T12:00:00', name: 'Autumn Leaves Set', desc: 'Wrap up in the warm colors of the changing season.', icon: '🍂' },
+                    { id: 'set7', revealDate: '2025-10-31T18:00:00', name: 'Haunted Masquerade Set', desc: 'The grand finale! A mysterious and ornate Halloween outfit.', icon: '🎭' }
                 ];
                 let activeTimers = [];
 
@@ -269,7 +269,6 @@
                         const distance = timer.revealTimestamp - now;
 
                         if (distance <= 0) {
-                            // Time's up! Reveal the card.
                             const cardToReveal = document.getElementById(timer.cardId);
                             const setData = setsData.find(s => s.id === timer.cardId);
                             if (cardToReveal && setData) {
@@ -282,7 +281,7 @@
                                         <p>${setData.desc}</p>
                                     </div>`;
                             }
-                            return false; // Remove timer from active list
+                            return false; // Remove timer
                         }
 
                         const d = Math.floor(distance / 864e5);
@@ -294,7 +293,7 @@
                         if (timerEl) {
                            timerEl.innerHTML = `${d}d : ${h}h : ${m}m : ${s}s`;
                         }
-                        return true; // Keep timer active
+                        return true; // Keep timer
                     });
                 }
                 
