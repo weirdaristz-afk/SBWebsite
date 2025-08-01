@@ -12,149 +12,59 @@
     <script src="https://unpkg.com/phosphor-icons"></script>
 
     <style>
-        /* --- Base Styles (Applied to All Themes) --- */
+        /* CSS from the previous version is unchanged */
         :root {
-            /* These will be overridden by the seasonal/dark themes */
-            --bg-color: #fdf6e3;
-            --surface-color: #fffaf0;
-            --primary-color: #ffb6c1;
-            --secondary-color: #87ceeb;
-            --accent-color: #98fb98;
-            --text-color: #5d5d5d;
-            --header-font: 'Pacifico', cursive;
-            --body-font: 'Quicksand', sans-serif;
-            --shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            --bg-color: #fdf6e3; --surface-color: #fffaf0; --primary-color: #ffb6c1; --secondary-color: #87ceeb; --accent-color: #98fb98;
+            --text-color: #5d5d5d; --header-font: 'Pacifico', cursive; --body-font: 'Quicksand', sans-serif; --shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
             --nav-bg: rgba(255, 255, 255, 0.7);
         }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
+        html { scroll-behavior: smooth; }
         body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: var(--body-font);
-            margin: 0;
-            padding: 0;
-            text-align: center;
-            transition: background-color 0.5s ease, color 0.5s ease;
-            cursor: none;
+            background-color: var(--bg-color); color: var(--text-color); font-family: var(--body-font); margin: 0; padding: 0;
+            text-align: center; transition: background-color 0.5s ease, color 0.5s ease; cursor: none;
         }
-
-        /* --- ✨ LIGHT MODE THEMES ✨ --- */
-        
-        body.theme-spring {
-            --bg-color: #fdf6f9; --surface-color: #ffffff; --primary-color: #ff85a2;
-            --secondary-color: #8de4ff; --accent-color: #b9ffb7; --text-color: #5c5255;
-            --header-font: 'Pacifico', cursive; --body-font: 'Quicksand', sans-serif;
-        }
-
-        /* ☀️ New & Improved Summer Theme */
-        body.theme-summer {
-            --bg-color: #FFF9F5; /* Seashell */
-            --surface-color: #ffffff;
-            --primary-color: #FF8C69; /* Coral */
-            --secondary-color: #6AAB9C; /* Ocean Foam Green */
-            --accent-color: #F0E68C; /* Khaki/Sand */
-            --text-color: #4A4A4A;
-            --header-font: 'Lilita One', cursive; --body-font: 'Poppins', sans-serif;
-        }
-
-        body.theme-autumn {
-            --bg-color: #fff8f0; --surface-color: #ffffff; --primary-color: #e57a44;
-            --secondary-color: #8c5e58; --accent-color: #a33333; --text-color: #5a4e46;
-            --header-font: 'Lobster', cursive; --body-font: 'Roboto Slab', serif;
-        }
-        
-        body.theme-winter {
-            --bg-color: #f0f8ff; --surface-color: #ffffff; --primary-color: #7d97f8;
-            --secondary-color: #c4a7e7; --accent-color: #f8b8d8; --text-color: #5b647c;
-            --header-font: 'Mountains of Christmas', cursive; --body-font: 'Lato', sans-serif;
-        }
-        
-        /* --- 🌙 DARK MODE THEME 🌙 --- */
-        body.dark-mode {
-            --bg-color: #1A1D28;
-            --surface-color: #242835;
-            --text-color: #E0E0E0;
-            --shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-            --nav-bg: rgba(26, 29, 40, 0.7);
-        }
-        /* Make seasonal colors pop on dark backgrounds */
+        body.theme-spring { --bg-color: #fdf6f9; --surface-color: #ffffff; --primary-color: #ff85a2; --secondary-color: #8de4ff; --accent-color: #b9ffb7; --text-color: #5c5255; --header-font: 'Pacifico', cursive; --body-font: 'Quicksand', sans-serif; }
+        body.theme-summer { --bg-color: #FFF9F5; --surface-color: #ffffff; --primary-color: #FF8C69; --secondary-color: #6AAB9C; --accent-color: #F0E68C; --text-color: #4A4A4A; --header-font: 'Lilita One', cursive; --body-font: 'Poppins', sans-serif; }
+        body.theme-autumn { --bg-color: #fff8f0; --surface-color: #ffffff; --primary-color: #e57a44; --secondary-color: #8c5e58; --accent-color: #a33333; --text-color: #5a4e46; --header-font: 'Lobster', cursive; --body-font: 'Roboto Slab', serif; }
+        body.theme-winter { --bg-color: #f0f8ff; --surface-color: #ffffff; --primary-color: #7d97f8; --secondary-color: #c4a7e7; --accent-color: #f8b8d8; --text-color: #5b647c; --header-font: 'Mountains of Christmas', cursive; --body-font: 'Lato', sans-serif; }
+        body.dark-mode { --bg-color: #1A1D28; --surface-color: #242835; --text-color: #E0E0E0; --shadow: 0 8px 25px rgba(0, 0, 0, 0.2); --nav-bg: rgba(26, 29, 40, 0.7); }
         body.dark-mode.theme-spring { --primary-color: #ff9ab4; --secondary-color: #a1e9ff; }
         body.dark-mode.theme-summer { --primary-color: #ff9a8a; --secondary-color: #7bc4b5; }
         body.dark-mode.theme-autumn { --primary-color: #f38f5f; --secondary-color: #ab8a85; }
         body.dark-mode.theme-winter { --primary-color: #9aaeff; --secondary-color: #d8c2f5; }
-
-
-        /* --- UI & LAYOUT --- */
         #particles-js { position: fixed; width: 100%; height: 100%; top: 0; left: 0; z-index: -1; }
-        
-        #custom-cursor {
-            width: 30px; height: 30px; border: 2px solid var(--primary-color); border-radius: 50%;
-            position: fixed; transform: translate(-50%, -50%); pointer-events: none; z-index: 9999;
-            transition: width 0.2s, height 0.2s, border-width 0.2s, background-color 0.2s;
-        }
+        #custom-cursor { width: 30px; height: 30px; border: 2px solid var(--primary-color); border-radius: 50%; position: fixed; transform: translate(-50%, -50%); pointer-events: none; z-index: 9999; transition: width 0.2s, height 0.2s, border-width 0.2s, background-color 0.2s; }
         #custom-cursor.pointer { width: 40px; height: 40px; background-color: color-mix(in srgb, var(--accent-color) 30%, transparent); }
         a, button, .play-button { cursor: none; }
-
-        nav {
-            background-color: var(--nav-bg); backdrop-filter: blur(10px); position: sticky;
-            top: 0; width: 100%; z-index: 1000; padding: 10px 0;
-            border-bottom: 1px solid color-mix(in srgb, var(--text-color) 10%, transparent);
-            transition: background-color 0.5s ease;
-        }
+        nav { background-color: var(--nav-bg); backdrop-filter: blur(10px); position: sticky; top: 0; width: 100%; z-index: 1000; padding: 10px 0; border-bottom: 1px solid color-mix(in srgb, var(--text-color) 10%, transparent); transition: background-color 0.5s ease; }
         nav ul { list-style: none; margin: 0; padding: 0; display: flex; justify-content: center; flex-wrap: wrap; gap: 5px; align-items: center; }
-        nav a {
-            color: var(--primary-color); text-decoration: none; font-weight: 700; font-size: 1.1em;
-            padding: 10px 20px; border-radius: 50px; transition: all 0.3s ease; display: flex; align-items: center; gap: 8px;
-        }
+        nav a { color: var(--primary-color); text-decoration: none; font-weight: 700; font-size: 1.1em; padding: 10px 20px; border-radius: 50px; transition: all 0.3s ease; display: flex; align-items: center; gap: 8px; }
         nav a:hover, nav a.active { background-color: var(--primary-color); color: var(--surface-color); transform: scale(1.1); }
-        
-        #theme-toggle {
-            background: none; border: 2px solid var(--primary-color); color: var(--primary-color);
-            width: 45px; height: 45px; border-radius: 50%; display: flex; justify-content: center; align-items: center;
-            font-size: 1.5em; transition: all 0.3s ease;
-        }
+        #theme-toggle { background: none; border: 2px solid var(--primary-color); color: var(--primary-color); width: 45px; height: 45px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 1.5em; transition: all 0.3s ease; }
         #theme-toggle:hover { background-color: var(--primary-color); color: var(--surface-color); transform: rotate(15deg) scale(1.1); }
         nav i { font-size: 1.4em; }
-
         .container { padding: 20px; max-width: 1100px; margin: 0 auto; }
         main { display: none; opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease-out, transform 0.5s ease-out; }
         main.active { display: block; opacity: 1; transform: translateY(0); }
-        
         @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-15px); } 100% { transform: translateY(0px); } }
         h1 { font-family: var(--header-font); font-size: clamp(3rem, 12vw, 5.5rem); color: var(--primary-color); text-shadow: 3px 3px 0 var(--secondary-color); margin: 40px 0; animation: float 6s ease-in-out infinite; }
         h2 { font-family: var(--header-font); font-size: 2.5em; color: var(--primary-color); margin-bottom: 30px; }
         h3 { font-family: var(--header-font); }
         p { line-height: 1.8; font-size: 1.1em; max-width: 700px; margin: 0 auto 20px auto; }
-        
-        .section {
-            background: var(--surface-color); padding: 40px; margin: 40px 0; border-radius: 24px;
-            box-shadow: var(--shadow); border: 1px solid color-mix(in srgb, var(--text-color) 5%, transparent);
-            transition: background-color 0.5s ease;
-        }
-
-        .play-button {
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color)); color: #fff; padding: 18px 45px; text-decoration: none;
-            font-size: 1.3em; font-weight: 700; font-family: var(--header-font); border-radius: 50px;
-            transition: transform 0.3s, box-shadow 0.3s; display: inline-block; margin-top: 20px; border: none;
-            box-shadow: 0 5px 20px color-mix(in srgb, var(--primary-color) 40%, transparent);
-        }
+        .section { background: var(--surface-color); padding: 40px; margin: 40px 0; border-radius: 24px; box-shadow: var(--shadow); border: 1px solid color-mix(in srgb, var(--text-color) 5%, transparent); transition: background-color 0.5s ease; }
+        .play-button { background: linear-gradient(45deg, var(--primary-color), var(--secondary-color)); color: #fff; padding: 18px 45px; text-decoration: none; font-size: 1.3em; font-weight: 700; font-family: var(--header-font); border-radius: 50px; transition: transform 0.3s, box-shadow 0.3s; display: inline-block; margin-top: 20px; border: none; box-shadow: 0 5px 20px color-mix(in srgb, var(--primary-color) 40%, transparent); }
         .play-button:hover { transform: scale(1.05) rotate(-3deg); box-shadow: 0 10px 30px color-mix(in srgb, var(--secondary-color) 50%, transparent); }
-
-        /* Other styles are mostly unchanged and will adapt via CSS variables */
         #countdown { font-family: var(--header-font); font-size: 2.2em; color: var(--text-color); background: color-mix(in srgb, var(--bg-color) 80%, black); padding: 20px; border-radius: 20px; box-shadow: inset 0 2px 10px rgba(0,0,0,0.05); }
         .sets-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
         .set-card { background-color: var(--bg-color); border-radius: 20px; overflow: hidden; transition: all 0.3s ease; border: 2px solid color-mix(in srgb, var(--text-color) 8%, transparent); box-shadow: none; }
         .set-card:hover { transform: translateY(-10px); border-color: var(--primary-color); box-shadow: var(--shadow); }
         .set-card .image-placeholder { background-color: color-mix(in srgb, var(--bg-color) 50%, black); width: 100%; height: 220px; display: flex; align-items: center; justify-content: center; font-size: 4em; font-family: var(--header-font); color: var(--secondary-color); transition: all 0.5s ease; }
         .set-card .info { padding: 20px; }
-        .set-card h3 { margin: 0 0 10px 0; color: var(--primary-color); }
-        .set-card .reveal-date { font-size: 0.9em; font-weight: 600; color: var(--secondary-color); }
+        .set-card h3 { margin: 0 0 10px 0; color: var(--primary-color); font-size: 1.8em; }
         .hidden-set .image-placeholder { filter: blur(15px) grayscale(50%); color: #bbb; }
         .revealed { border-color: var(--accent-color); }
+        .set-timer { font-size: 1.1em; font-weight: 700; color: var(--secondary-color); font-family: monospace; letter-spacing: 1px; }
+        .set-timer-label { font-size: 0.9em; font-weight: 600; color: var(--text-color); opacity: 0.7; }
         .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; }
         .creator-card, .game-card { background: var(--surface-color); padding: 20px; border-radius: 20px; transition: transform 0.3s ease, box-shadow 0.3s ease; border: 1px solid color-mix(in srgb, var(--text-color) 5%, transparent); }
         .creator-card:hover, .game-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
@@ -167,7 +77,6 @@
         .update-entry ul li { padding-left: 10px; margin-bottom: 10px; }
         footer { padding: 40px 20px; margin-top: 50px; color: color-mix(in srgb, var(--text-color) 60%, transparent); }
         footer a { color: var(--primary-color); }
-
     </style>
 </head>
 <body>
@@ -192,33 +101,16 @@
 
     <div class="container">
         <main id="home-page" class="active">
-            <h1>Sweeties Boutique</h1>
-            <p>The Halloween Update is coming!</p>
-            <div id="countdown">Loading...</div>
-            <a href="https://www.roblox.com/share?code=f99ee88b22bdd341beee2509c9b6a24f&type=ExperienceDetails" class="play-button" target="_blank">Play Now on Roblox</a>
-
-            <div class="section">
+             <h1>Sweeties Boutique</h1>
+             <p>A new season of cute sets is just around the corner!</p>
+             <div id="countdown">Loading...</div>
+             <a href="https://www.roblox.com/share?code=f99ee88b22bdd341beee2509c9b6a24f&type=ExperienceDetails" class="play-button" target="_blank">Play Now on Roblox</a>
+             <div class="section">
                 <h2>Other Games to Play!</h2>
-                <p>While you wait for the next update, why not check out some other amazing games?</p>
                 <div class="card-grid">
-                    <a href="https://www.roblox.com/games/5476651239/Fluffy-Hills-Summer" target="_blank" style="text-decoration:none;">
-                        <div class="game-card">
-                            <img src="https://placehold.co/400x200/6AAB9C/FFFFFF?text=Fluffy+Hills" alt="Fluffy Hills">
-                            <h3>Fluffy Hills</h3>
-                        </div>
-                    </a>
-                    <a href="https://www.roblox.com/games/12999258688/Glamour-Dolls-PRIDE-SET" target="_blank" style="text-decoration:none;">
-                        <div class="game-card">
-                            <img src="https://placehold.co/400x200/FF8C69/FFFFFF?text=Glamour+Dolls" alt="Glamour Dolls 🌸">
-                            <h3>Glamour Dolls 🌸</h3>
-                        </div>
-                    </a>
-                    <a href="https://www.roblox.com/games/18956320538/ANIMAL-EVENTS-Mermaid-Isle" target="_blank" style="text-decoration:none;">
-                        <div class="game-card">
-                            <img src="https://placehold.co/400x200/F0E68C/FFFFFF?text=Mermaid+Isle" alt="Mermaid Isle">
-                            <h3>Mermaid Isle</h3>
-                        </div>
-                    </a>
+                    <a href="https://www.roblox.com/games/5476651239/Fluffy-Hills-Summer" target="_blank" style="text-decoration:none;"><div class="game-card"><img src="https://placehold.co/400x200/6AAB9C/FFFFFF?text=Fluffy+Hills" alt="Fluffy Hills"><h3>Fluffy Hills</h3></div></a>
+                    <a href="https://www.roblox.com/games/12999258688/Glamour-Dolls-PRIDE-SET" target="_blank" style="text-decoration:none;"><div class="game-card"><img src="https://placehold.co/400x200/FF8C69/FFFFFF?text=Glamour+Dolls" alt="Glamour Dolls 🌸"><h3>Glamour Dolls 🌸</h3></div></a>
+                    <a href="https://www.roblox.com/games/18956320538/ANIMAL-EVENTS-Mermaid-Isle" target="_blank" style="text-decoration:none;"><div class="game-card"><img src="https://placehold.co/400x200/F0E68C/FFFFFF?text=Mermaid+Isle" alt="Mermaid Isle"><h3>Mermaid Isle</h3></div></a>
                 </div>
             </div>
         </main>
@@ -231,21 +123,14 @@
         </main>
         <main id="updates-page">
              <div class="section">
-                <h2>Past Game Updates</h2>
-                <div class="update-entry">
-                    <h3>Halloween Update - Coming Oct 1, 2025</h3>
-                    <ul><li>Introduced the new Spooky Haunted Boutique area!</li><li>Added 5 new limited-time Unicorns: Ghostly, Vampy, Candy Corn, Pumpkin Spice, and Witchy.</li></ul>
-                </div>
-                 <div class="update-entry">
-                    <h3>v1.0 - Launch!</h3>
-                    <ul><li>Sweeties Boutique is now open!</li></ul>
-                </div>
+                <h2>Game Updates</h2>
+                <div class="update-entry"><h3>Halloween Update - Coming Oct 1, 2025</h3><ul><li>Introduced the new Spooky Haunted Boutique area!</li><li>Added 5 new limited-time Unicorns: Ghostly, Vampy, Candy Corn, Pumpkin Spice, and Witchy.</li></ul></div>
+                 <div class="update-entry"><h3>v1.0 - Launch!</h3><ul><li>Sweeties Boutique is now open!</li></ul></div>
             </div>
         </main>
         <main id="creators-page">
             <div class="section">
                 <h2>Meet the Workers!</h2>
-                <p>The amazing team that brings Sweeties Boutique to life.</p>
                 <div class="card-grid">
                     <div class="creator-card"><h3>WeirdPersonDraws!</h3><p>Owner, Producer, & Scripter!</p><a href="https://twitter.com/WeirdPersonDraw" target="_blank">Twitter/X</a></div>
                     <div class="creator-card"><h3>ByCherine</h3><p>Owner, 3D Modeler, Artist & Build</p><a href="https://twitter.com/dollsby_" target="_blank">Twitter/X</a></div>
@@ -259,10 +144,7 @@
         <main id="feed-page">
              <div class="section">
                 <h2>Live from Twitter/X</h2>
-                <p>Follow us for the latest sneak peeks and announcements!</p>
-                <div id="twitter-feed-container">
-                    <a class="twitter-timeline" data-theme="light" href="https://twitter.com/PlaySweetiesB?ref_src=twsrc%5Etfw">Tweets by PlaySweetiesB</a>
-                </div>
+                <div id="twitter-feed-container"><a class="twitter-timeline" data-theme="light" href="https://twitter.com/PlaySweetiesB?ref_src=twsrc%5Etfw">Tweets by PlaySweetiesB</a></div>
             </div>
         </main>
     </div>
@@ -278,55 +160,24 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
 
+            // --- THEME & UI ---
             const themeToggle = document.getElementById('theme-toggle');
             const toggleIcon = themeToggle.querySelector('i');
-
-            // --- THEME ENGINE ---
-            function getSeason(date) {
-                const month = date.getMonth();
-                if (month >= 2 && month <= 4) return 'spring';
-                if (month >= 5 && month <= 7) return 'summer';
-                if (month >= 8 && month <= 10) return 'autumn';
-                return 'winter';
-            }
-
+            function getSeason(d) { const m=d.getMonth(); return m>=2&&m<=4?'spring':m>=5&&m<=7?'summer':m>=8&&m<=10?'autumn':'winter'; }
             function applyTheme(mode) {
                 document.body.classList.toggle('dark-mode', mode === 'dark');
                 toggleIcon.className = mode === 'dark' ? 'ph-moon' : 'ph-sun';
                 localStorage.setItem('themeMode', mode);
-                reloadTwitterWidget(mode);
-            }
-
-            function reloadTwitterWidget(mode) {
-                const container = document.getElementById('twitter-feed-container');
-                if (!container) return;
-                const currentTimeline = container.querySelector('.twitter-timeline');
-                if (currentTimeline) {
-                    currentTimeline.setAttribute('data-theme', mode);
-                    // If widgets.js is loaded, tell it to re-render
-                    if (window.twttr && window.twttr.widgets) {
-                         // Clear the container and add a fresh link before loading
-                        container.innerHTML = `<a class="twitter-timeline" data-theme="${mode}" href="https://twitter.com/PlaySweetiesB?ref_src=twsrc%5Etfw">Tweets by PlaySweetiesB</a>`;
-                        window.twttr.widgets.load(container);
-                    }
+                if (typeof twttr !== 'undefined' && twttr.widgets) {
+                    const container = document.getElementById('twitter-feed-container');
+                    container.innerHTML = `<a class="twitter-timeline" data-theme="${mode}" href="https://twitter.com/PlaySweetiesB?ref_src=twsrc%5Etfw">Tweets by PlaySweetiesB</a>`;
+                    twttr.widgets.load(container);
                 }
             }
-            
-            // Set seasonal class
             document.body.classList.add(`theme-${getSeason(new Date())}`);
-
-            // Apply saved or system preference for dark mode
             const savedMode = localStorage.getItem('themeMode') || 'light';
             applyTheme(savedMode);
-
-            // Toggle listener
-            themeToggle.addEventListener('click', () => {
-                const newMode = document.body.classList.contains('dark-mode') ? 'light' : 'dark';
-                applyTheme(newMode);
-            });
-
-            // --- PARTICLE & CURSOR LOGIC ---
-            // (Particle configurations from previous version would go here)
+            themeToggle.addEventListener('click', () => applyTheme(document.body.classList.contains('dark-mode') ? 'light' : 'dark'));
             const cursor = document.getElementById('custom-cursor');
             window.addEventListener('mousemove', e => { cursor.style.left = `${e.clientX}px`; cursor.style.top = `${e.clientY}px`; });
             document.querySelectorAll('a, button, .play-button').forEach(el => {
@@ -334,76 +185,120 @@
                 el.addEventListener('mouseleave', () => cursor.classList.remove('pointer'));
             });
 
-            // --- PAGE NAVIGATION & CONTENT LOGIC ---
-            // (All navigation, countdown, and set reveal JS from the previous version is unchanged)
+
+            // --- PAGE NAVIGATION & MAIN COUNTDOWN ---
             const navLinks = document.querySelectorAll('.nav-link');
             const pages = document.querySelectorAll('main');
             function showPage(pageId) {
-                pages.forEach(page => page.classList.remove('active'));
+                pages.forEach(p => p.classList.remove('active'));
                 setTimeout(() => {
-                    pages.forEach(page => {
-                        page.style.display = 'none';
-                        if (`#${page.id.replace('-page', '')}` === pageId) {
-                            page.style.display = 'block';
-                            setTimeout(() => page.classList.add('active'), 20);
+                    pages.forEach(p => {
+                        p.style.display = 'none';
+                        if (`#${p.id.replace('-page', '')}` === pageId) {
+                            p.style.display = 'block';
+                            setTimeout(() => p.classList.add('active'), 20);
                         }
                     });
                 }, 250);
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === pageId) link.classList.add('active');
-                });
+                navLinks.forEach(l => {l.classList.remove('active'); if(l.getAttribute('href')===pageId) l.classList.add('active');});
             }
-            navLinks.forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const targetId = link.getAttribute('href');
-                    showPage(targetId);
-                    window.history.pushState(null, '', targetId);
-                });
-            });
+            navLinks.forEach(link => link.addEventListener('click', (e) => { e.preventDefault(); showPage(link.getAttribute('href')); window.history.pushState(null, '', link.getAttribute('href')); }));
             const initialPage = window.location.hash || '#home';
-            const targetPage = document.getElementById(initialPage.substring(1) + '-page');
-            if (targetPage) {
-                pages.forEach(p => p.style.display = 'none');
-                targetPage.style.display = 'block';
-                setTimeout(() => targetPage.classList.add('active'), 20);
-            }
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === initialPage) link.classList.add('active');
-            });
-            const countDownDate = new Date("Oct 1, 2025 00:00:00").getTime();
-            const countdownElement = document.getElementById("countdown");
-            if(countdownElement) {
-                const countdownInterval = setInterval(() => {
-                    const distance = countDownDate - new Date().getTime();
-                    if (distance < 0) {
-                        clearInterval(countdownInterval);
-                        countdownElement.innerHTML = "THE UPDATE IS LIVE! 🎉";
-                        return;
-                    }
-                    const d = Math.floor(distance / (86400000));
-                    const h = Math.floor((distance % 86400000) / 3600000);
-                    const m = Math.floor((distance % 3600000) / 60000);
-                    const s = Math.floor((distance % 60000) / 1000);
-                    countdownElement.innerHTML = `${d}d ${h}h ${m}m ${s}s`;
-                }, 1000);
-            }
+            showPage(initialPage);
+            const mainCountDownDate = new Date("Oct 1, 2025 00:00:00").getTime();
+            const mainCountdownElement = document.getElementById("countdown");
+            if(mainCountdownElement) setInterval(() => {
+                const dist = mainCountDownDate - new Date().getTime();
+                if(dist<0){mainCountdownElement.innerHTML="THE UPDATE IS LIVE! 🎉";return;}
+                const d=Math.floor(dist/864e5),h=Math.floor((dist%864e5)/36e5),m=Math.floor((dist%36e5)/6e4),s=Math.floor((dist%6e4)/1e3);
+                mainCountdownElement.innerHTML = `${d}d ${h}h ${m}m ${s}s`;
+            }, 1000);
+
+
+            // --- ✨ COMING SOON SETS WITH TIMERS ✨ ---
             const setsContainer = document.querySelector('#sets-page .sets-grid');
-            if(setsContainer) {
-                const now = new Date().getTime();
+            if (setsContainer) {
                 const setsData = [
-                    { id: 'set1', revealDate: 'Aug 5, 2025 12:00:00', name: 'Starfall Set', desc: 'A magical set forged from fallen stars.', icon: '✨' }, { id: 'set2', revealDate: 'Aug 10, 2025 12:00:00', name: 'Midnight Set', desc: 'A spooky set for creatures of the night.', icon: '🦇' }, { id: 'set3', revealDate: 'Aug 15, 2025 12:00:00', name: 'Bubblegum Set', desc: 'A sweet and sticky-fun ensemble.', icon: '🍬' }, { id: 'set4', revealDate: 'Aug 20, 2025 12:00:00', name: 'Ocean Song Set', desc: 'Ride the waves with this beautiful set.', icon: '🌊' }, { id: 'set5', revealDate: 'Aug 25, 2025 12:00:00', name: 'Forest Spirit Set', desc: 'Become one with nature.', icon: '🌿' }, { id: 'set6', revealDate: 'Sep 1, 2025 12:00:00', name: 'Royal Tea Set', desc: 'Perfect for a party with your besties.', icon: '👑' }, { id: 'set7', revealDate: 'Sep 5, 2025 12:00:00', name: 'Gamer Glitch Set', desc: 'Level up your style with this techy look.', icon: '🎮' }
+                    { id: 'set1', revealDate: '2025-08-05T12:00:00', name: 'Starfall Set', desc: 'A magical set forged from fallen stars.', icon: '✨' },
+                    { id: 'set2', revealDate: '2025-08-10T12:00:00', name: 'Midnight Set', desc: 'A spooky set for creatures of the night.', icon: '🦇' },
+                    { id: 'set3', revealDate: '2025-08-15T12:00:00', name: 'Bubblegum Set', desc: 'A sweet and sticky-fun ensemble.', icon: '🍬' },
+                    { id: 'set4', revealDate: '2025-08-20T12:00:00', name: 'Ocean Song Set', desc: 'Ride the waves with this beautiful set.', icon: '🌊' },
+                    { id: 'set5', revealDate: '2025-08-25T12:00:00', name: 'Forest Spirit Set', desc: 'Become one with nature.', icon: '🌿' },
+                    { id: 'set6', revealDate: '2025-09-01T12:00:00', name: 'Royal Tea Set', desc: 'Perfect for a party with your besties.', icon: '👑' },
+                    { id: 'set7', revealDate: '2025-09-05T12:00:00', name: 'Gamer Glitch Set', desc: 'Level up your style with this techy look.', icon: '🎮' }
                 ];
+                let activeTimers = [];
+
+                function renderCard(setData, isRevealed) {
+                    const card = document.createElement('div');
+                    card.id = setData.id;
+                    card.className = `set-card ${isRevealed ? 'revealed' : 'hidden-set'}`;
+                    
+                    if (isRevealed) {
+                        card.innerHTML = `
+                            <div class="image-placeholder">${setData.icon}</div>
+                            <div class="info">
+                                <h3>${setData.name}</h3>
+                                <p>${setData.desc}</p>
+                            </div>`;
+                    } else {
+                        card.innerHTML = `
+                            <div class="image-placeholder">?</div>
+                            <div class="info">
+                                <h3>???</h3>
+                                <p class="set-timer-label">Reveals In:</p>
+                                <p class="set-timer" id="timer-${setData.id}">Calculating...</p>
+                            </div>`;
+                        activeTimers.push({ cardId: setData.id, revealTimestamp: new Date(setData.revealDate).getTime() });
+                    }
+                    return card;
+                }
+                
                 setsContainer.innerHTML = '';
+                const now = new Date().getTime();
                 setsData.forEach(set => {
                     const isRevealed = now >= new Date(set.revealDate).getTime();
-                    const card = document.createElement('div');
-                    card.className = `set-card ${isRevealed ? 'revealed' : 'hidden-set'}`;
-                    card.innerHTML = `<div class="image-placeholder">${isRevealed ? set.icon : '?'}</div><div class="info"><h3>${isRevealed ? set.name : '???'}</h3><p>${isRevealed ? set.desc : 'A mysterious new set is on its way...'}</p><p class="reveal-date">Reveals on: ${new Date(set.revealDate).toLocaleDateString()}</p></div>`;
-                    setsContainer.appendChild(card);
+                    setsContainer.appendChild(renderCard(set, isRevealed));
                 });
+
+                function updateTimers() {
+                    if (activeTimers.length === 0) return;
+                    
+                    activeTimers = activeTimers.filter(timer => {
+                        const now = new Date().getTime();
+                        const distance = timer.revealTimestamp - now;
+
+                        if (distance <= 0) {
+                            // Time's up! Reveal the card.
+                            const cardToReveal = document.getElementById(timer.cardId);
+                            const setData = setsData.find(s => s.id === timer.cardId);
+                            if (cardToReveal && setData) {
+                                cardToReveal.classList.remove('hidden-set');
+                                cardToReveal.classList.add('revealed');
+                                cardToReveal.innerHTML = `
+                                    <div class="image-placeholder">${setData.icon}</div>
+                                    <div class="info">
+                                        <h3>${setData.name}</h3>
+                                        <p>${setData.desc}</p>
+                                    </div>`;
+                            }
+                            return false; // Remove timer from active list
+                        }
+
+                        const d = Math.floor(distance / 864e5);
+                        const h = Math.floor((distance % 864e5) / 36e5);
+                        const m = Math.floor((distance % 36e5) / 6e4);
+                        const s = Math.floor((distance % 6e4) / 1e3);
+
+                        const timerEl = document.getElementById(`timer-${timer.cardId}`);
+                        if (timerEl) {
+                           timerEl.innerHTML = `${d}d : ${h}h : ${m}m : ${s}s`;
+                        }
+                        return true; // Keep timer active
+                    });
+                }
+                
+                setInterval(updateTimers, 1000);
             }
         });
     </script>
